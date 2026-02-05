@@ -108,4 +108,298 @@
             background-position: 100% 50%;
         }
     }
+
+    /* Esoteric motif utilities */
+    .motif-grain {
+        position: relative;
+    }
+
+    .motif-grain::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: url('/assets/generated/dark-grain-texture.dim_2048x2048.png');
+        background-size: 400px 400px;
+        background-repeat: repeat;
+        opacity: 0.03;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .motif-moon {
+        position: relative;
+    }
+
+    .motif-moon::before {
+        content: '';
+        position: absolute;
+        top: 10%;
+        right: 5%;
+        width: 180px;
+        height: 180px;
+        background-image: url('/assets/generated/tarot-moon-line.dim_512x512.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        opacity: 0.04;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .motif-star {
+        position: relative;
+    }
+
+    .motif-star::before {
+        content: '';
+        position: absolute;
+        top: 15%;
+        left: 5%;
+        width: 160px;
+        height: 160px;
+        background-image: url('/assets/generated/tarot-star-line.dim_512x512.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        opacity: 0.04;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .motif-circle {
+        position: relative;
+    }
+
+    .motif-circle::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 500px;
+        height: 500px;
+        background-image: url('/assets/generated/alchemy-circle-line.dim_1024x1024.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        opacity: 0.025;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .motif-flourish-divider {
+        position: relative;
+        height: 60px;
+        background-image: url('/assets/generated/ornate-divider-flourish.dim_1600x120.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        opacity: 0.15;
+        margin: 3rem auto;
+        max-width: 600px;
+    }
+
+    /* Ensure content stays above motifs */
+    .motif-content {
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Access Gate Enhancements */
+    .gate-container {
+        background: radial-gradient(ellipse at center, oklch(var(--background)) 0%, oklch(0.06 0 0) 100%);
+    }
+
+    .gate-grid {
+        animation: gate-grid-drift 20s ease-in-out infinite;
+    }
+
+    @keyframes gate-grid-drift {
+        0%, 100% {
+            transform: translate(0, 0);
+        }
+        50% {
+            transform: translate(8px, 8px);
+        }
+    }
+
+    .gate-lock-container {
+        animation: gate-lock-float 6s ease-in-out infinite;
+    }
+
+    @keyframes gate-lock-float {
+        0%, 100% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-12px);
+        }
+    }
+
+    .gate-glow-ring {
+        animation: gate-glow-pulse 4s ease-in-out infinite;
+    }
+
+    @keyframes gate-glow-pulse {
+        0%, 100% {
+            opacity: 0.4;
+            transform: scale(1);
+        }
+        50% {
+            opacity: 0.6;
+            transform: scale(1.1);
+        }
+    }
+
+    .gate-sparkle-1 {
+        animation: gate-sparkle-twinkle 3s ease-in-out infinite;
+    }
+
+    .gate-sparkle-2 {
+        animation: gate-sparkle-twinkle 3s ease-in-out infinite 1.5s;
+    }
+
+    @keyframes gate-sparkle-twinkle {
+        0%, 100% {
+            opacity: 0.3;
+            transform: scale(1) rotate(0deg);
+        }
+        50% {
+            opacity: 0.8;
+            transform: scale(1.2) rotate(180deg);
+        }
+    }
+
+    .gate-title {
+        animation: gate-title-glow 4s ease-in-out infinite;
+    }
+
+    @keyframes gate-title-glow {
+        0%, 100% {
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+        }
+        50% {
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+        }
+    }
+
+    .gate-badge {
+        animation: gate-badge-shimmer 3s ease-in-out infinite;
+    }
+
+    @keyframes gate-badge-shimmer {
+        0%, 100% {
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+        }
+        50% {
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.25);
+        }
+    }
+
+    .gate-unlock-btn:not(:disabled):hover {
+        animation: gate-btn-pulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes gate-btn-pulse {
+        0%, 100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.02);
+        }
+    }
+
+    /* Floating ambient particles */
+    .gate-particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: oklch(var(--gold));
+        border-radius: 50%;
+        opacity: 0;
+        filter: blur(1px);
+    }
+
+    .gate-particle-1 {
+        top: 20%;
+        left: 15%;
+        animation: gate-particle-float-1 8s ease-in-out infinite;
+    }
+
+    .gate-particle-2 {
+        top: 60%;
+        right: 20%;
+        animation: gate-particle-float-2 10s ease-in-out infinite 2s;
+    }
+
+    .gate-particle-3 {
+        bottom: 30%;
+        left: 25%;
+        animation: gate-particle-float-3 12s ease-in-out infinite 4s;
+    }
+
+    @keyframes gate-particle-float-1 {
+        0%, 100% {
+            opacity: 0;
+            transform: translate(0, 0);
+        }
+        25% {
+            opacity: 0.3;
+        }
+        50% {
+            opacity: 0.5;
+            transform: translate(30px, -40px);
+        }
+        75% {
+            opacity: 0.3;
+        }
+    }
+
+    @keyframes gate-particle-float-2 {
+        0%, 100% {
+            opacity: 0;
+            transform: translate(0, 0);
+        }
+        25% {
+            opacity: 0.4;
+        }
+        50% {
+            opacity: 0.6;
+            transform: translate(-40px, -30px);
+        }
+        75% {
+            opacity: 0.4;
+        }
+    }
+
+    @keyframes gate-particle-float-3 {
+        0%, 100% {
+            opacity: 0;
+            transform: translate(0, 0);
+        }
+        25% {
+            opacity: 0.3;
+        }
+        50% {
+            opacity: 0.5;
+            transform: translate(20px, -50px);
+        }
+        75% {
+            opacity: 0.3;
+        }
+    }
+
+    .animate-pulse-slow {
+        animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    @keyframes pulse-slow {
+        0%, 100% {
+            opacity: 0.3;
+        }
+        50% {
+            opacity: 0.5;
+        }
+    }
+
+    .bg-gradient-radial {
+        background: radial-gradient(circle, var(--tw-gradient-stops));
+    }
 }

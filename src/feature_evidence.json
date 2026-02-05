@@ -2,10 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-update-the-after-the-session-copy-in-the-what-to-expect-from-the-clearing-section-frontend-src-components-whattoexpect-tsx-to-remove-the-statement-that-there-is-no-ongoing-relationship-and-replace-it-with-wording-that-a-clearly-avoids-client-dependency-and-b-still-welcomes-permits-ongoing-connection-e-g-future-contact-or-staying-connected-in-a-bounded-non-dependent-way-use-english-for-all-user-facing-text",
-      "featureTitle": "Update the “After the Session” copy in the “What to Expect from The Clearing” section (frontend/src/components/WhatToExpect.tsx) to remove the statement that there is “no ongoing relationship,” and replace it with wording that (a) clearly avoids client dependency and (b) still welcomes/permits ongoing connection (e.g., future contact or staying connected) in a bounded, non-dependent way. Use English for all user-facing text.",
+      "featureId": "feature-remove-the-aurora-arcana-banner-image-rendering-from-the-practitionerauthority-section-so-no-banner-is-displayed-at-the-bottom-of-the-section-while-keeping-the-existing-tiktok-and-instagram-access-links-intact",
+      "featureTitle": "Remove the Aurora Arcana banner image rendering from the PractitionerAuthority section so no banner is displayed at the bottom of the section, while keeping the existing TikTok and Instagram access links intact.",
       "files": [
-        "frontend/src/components/WhatToExpect.tsx"
+        "frontend/src/components/PractitionerAuthority.tsx"
       ],
       "components": [
         "stripe@3.0.0",
@@ -20,15 +20,16 @@
         "invite-links@3.0.0"
       ],
       "testIds": [
-        "REQ-18"
+        "REQ-29"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-reorder-the-landing-page-sections-so-the-readiness-section-currently-rendered-by-frontend-src-components-whothisisfor-tsx-appears-immediately-after-the-foundation-section-frontend-src-components-whatitis-tsx-near-the-top-of-the-landing-page-implement-by-updating-the-render-order-in-frontend-src-app-tsx-without-removing-any-sections",
-      "featureTitle": "Reorder the landing-page sections so the “Readiness” section (currently rendered by frontend/src/components/WhoThisIsFor.tsx) appears immediately after the “Foundation” section (frontend/src/components/WhatItIs.tsx) near the top of the landing page. Implement by updating the render order in frontend/src/App.tsx without removing any sections.",
+      "featureId": "feature-refine-the-access-code-gate-entry-page-the-screen-shown-when-the-user-must-enter-code-1122-to-feel-more-visually-enticing-mysterious-engaging-and-provoking-while-keeping-the-ui-readable-and-aligned-with-the-existing-dark-gold-design-system",
+      "featureTitle": "Refine the access-code gate entry page (the screen shown when the user must enter code 1122) to feel more visually enticing, mysterious, engaging, and provoking, while keeping the UI readable and aligned with the existing dark + gold design system.",
       "files": [
-        "frontend/src/App.tsx"
+        "frontend/src/components/AccessCodeGate.tsx",
+        "frontend/src/index.css"
       ],
       "components": [
         "stripe@3.0.0",
@@ -43,30 +44,7 @@
         "invite-links@3.0.0"
       ],
       "testIds": [
-        "REQ-19"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-revise-the-copy-in-the-what-to-expect-from-the-clearing-section-frontend-src-components-whattoexpect-tsx-to-more-strongly-and-concretely-communicate-the-immense-opportunity-value-and-specific-practical-benefits-of-the-session-while-still-maintaining-readiness-filtering-language-and-an-informative-not-seductive-tone-use-practical-tangible-visible-helpful-outcome-language-e-g-clarity-on-decisions-naming-the-real-issue-identifying-next-steps-seeing-patterns-choices-use-english-for-all-user-facing-text",
-      "featureTitle": "Revise the copy in the “What to Expect from The Clearing” section (frontend/src/components/WhatToExpect.tsx) to more strongly and concretely communicate the immense opportunity/value and specific practical benefits of the session, while still maintaining readiness-filtering language and an informative (not “seductive”) tone. Use practical, tangible, visible, helpful outcome language (e.g., clarity on decisions, naming the real issue, identifying next steps, seeing patterns/choices). Use English for all user-facing text.",
-      "files": [
-        "frontend/src/components/WhatToExpect.tsx"
-      ],
-      "components": [
-        "stripe@3.0.0",
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "http-outcalls@3.0.0",
-        "authorization@4.0.0",
-        "blob-storage@4.0.0",
-        "github-export-icp-cli@1.0.0",
-        "invite-links@3.0.0"
-      ],
-      "testIds": [
-        "REQ-20"
+        "REQ-30"
       ],
       "confidence": "high"
     }

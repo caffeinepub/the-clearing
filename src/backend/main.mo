@@ -310,7 +310,10 @@ actor {
 
   let files = Map.empty<Text, FileReference>();
 
-  public query func getFile(id : Text) : async FileReference {
+  public query ({ caller }) func getFile(id : Text) : async FileReference {
+    if (not (AccessControl.hasPermission(accessControlState, caller, #user))) {
+      Runtime.trap("Unauthorized: Only users can access files");
+    };
     switch (files.get(id)) {
       case (?file) { file };
       case (null) { Runtime.trap("File not found") };

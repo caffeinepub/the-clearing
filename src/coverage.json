@@ -1,46 +1,37 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-05T19:09:41.652Z",
+  "generatedAt": "2026-02-05T20:06:49.744Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 3,
-    "implemented": 3,
+    "total": 2,
+    "implemented": 2,
     "items": [
       {
-        "id": "REQ-18",
-        "summary": "Update the “After the Session” copy in the “What to Expect from The Clearing” section (frontend/src/components/WhatToExpect.tsx) to remove the statement that there is “no ongoing relationship,” and replace it with wording that (a) clearly avoids client dependency and (b) still welcomes/permits ongoing connection (e.g., future contact or staying connected) in a bounded, non-dependent way. Use English for all user-facing text.",
+        "id": "REQ-29",
+        "summary": "Remove the Aurora Arcana banner image rendering from the PractitionerAuthority section so no banner is displayed at the bottom of the section, while keeping the existing TikTok and Instagram access links intact.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/components/WhatToExpect.tsx"
+          "frontend/src/components/PractitionerAuthority.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/components/WhatToExpect.tsx"
+          "frontend/src/components/PractitionerAuthority.tsx"
         ]
       },
       {
-        "id": "REQ-19",
-        "summary": "Reorder the landing-page sections so the “Readiness” section (currently rendered by frontend/src/components/WhoThisIsFor.tsx) appears immediately after the “Foundation” section (frontend/src/components/WhatItIs.tsx) near the top of the landing page. Implement by updating the render order in frontend/src/App.tsx without removing any sections.",
+        "id": "REQ-30",
+        "summary": "Refine the access-code gate entry page (the screen shown when the user must enter code 1122) to feel more visually enticing, mysterious, engaging, and provoking, while keeping the UI readable and aligned with the existing dark + gold design system.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/App.tsx"
+          "frontend/src/components/AccessCodeGate.tsx",
+          "frontend/src/index.css"
         ],
         "matchedFiles": [
-          "frontend/src/App.tsx"
-        ]
-      },
-      {
-        "id": "REQ-20",
-        "summary": "Revise the copy in the “What to Expect from The Clearing” section (frontend/src/components/WhatToExpect.tsx) to more strongly and concretely communicate the immense opportunity/value and specific practical benefits of the session, while still maintaining readiness-filtering language and an informative (not “seductive”) tone. Use practical, tangible, visible, helpful outcome language (e.g., clarity on decisions, naming the real issue, identifying next steps, seeing patterns/choices). Use English for all user-facing text.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/components/WhatToExpect.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/WhatToExpect.tsx"
+          "frontend/src/components/AccessCodeGate.tsx",
+          "frontend/src/index.css"
         ]
       }
     ]
@@ -50,8 +41,9 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/App.tsx",
-    "frontend/src/components/WhatToExpect.tsx",
+    "frontend/src/components/AccessCodeGate.tsx",
+    "frontend/src/components/PractitionerAuthority.tsx",
+    "frontend/src/index.css",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

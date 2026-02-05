@@ -3,60 +3,67 @@ import SectionShell from './SectionShell';
 
 export default function PractitionerAuthority() {
   return (
-    <SectionShell backgroundVariant="subtle" accentLabel="The Practitioner">
+    <SectionShell accentLabel="The Practitioner" motifVariant="circle" backgroundVariant="subtle">
       <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tighter mb-16 text-center">
-        The Practitioner
+        About the Practitioner
       </h2>
       
-      <div className="flex flex-col md:flex-row gap-16 items-start">
-        <div className="md:w-2/5 flex-shrink-0">
-          <div className="relative group">
-            {/* Gold border glow effect */}
-            <div className="absolute -inset-4 bg-gradient-to-br from-gold/30 via-gold/10 to-transparent rounded-sm blur-xl group-hover:blur-2xl transition-all duration-500" />
-            
-            {/* Image container */}
-            <div className="relative border-2 border-gold/20 group-hover:border-gold/40 transition-all duration-500 rounded-sm overflow-hidden">
-              <img 
-                src="/assets/generated/facilitator-headshot.user-upload.dim_400x400.jpg" 
-                alt="David Tessis - The Practitioner"
-                className="relative w-full aspect-square object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-              />
-            </div>
+      <div className="grid md:grid-cols-[300px_1fr] gap-12 items-start">
+        <div className="mx-auto md:mx-0 space-y-8">
+          <div className="relative w-64 h-64 md:w-full md:h-auto aspect-square rounded-lg overflow-hidden border-2 border-gold/30 shadow-gold group">
+            <img 
+              src="/assets/generated/facilitator-headshot.user-upload.dim_400x400.jpg"
+              alt="David Tessis - Founder of Aurora Arcana"
+              className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          </div>
+
+          {/* Social Media Links */}
+          <div className="flex justify-center gap-6 pt-2">
+            <a 
+              href="https://tiktok.com/@auroraarcanallc" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-gold transition-colors"
+              aria-label="TikTok - @auroraarcanallc"
+            >
+              <SiTiktok className="w-7 h-7" />
+            </a>
+            <a 
+              href="https://instagram.com/auroraarcanallc" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-gold transition-colors"
+              aria-label="Instagram - @auroraarcanallc"
+            >
+              <SiInstagram className="w-7 h-7" />
+            </a>
           </div>
         </div>
         
-        <div className="md:w-3/5 space-y-8 text-lg md:text-xl leading-relaxed">
-          <h3 className="text-3xl md:text-4xl font-light text-foreground">
-            David Tessis <span className="text-muted-foreground text-2xl">(he/him)</span>
-          </h3>
-          
-          <p className="text-muted-foreground">
-            Founder of Aurora Arcana. <span className="text-gold font-medium">Nearly 20 years of experience</span> working with tarot as a tool 
-            for clarity and perception. Certified life and health coach with over 6 years of practice.
+        <div className="space-y-8 text-lg md:text-xl leading-relaxed">
+          <p className="text-foreground/90">
+            <span className="font-medium text-gold">David Tessis</span> is a seasoned esoteric educator, tarot practitioner, and certified life and health coch with nearly 20 yers of experience in divination and over six years of professional coaching practice. He is the founder of <span className="text-gold font-medium">Aurora Arcana</span>, a private spiritual practice devoted to clarity, ethical discernment, and serious inner work at moments of genuine transition.
           </p>
           
           <p className="text-muted-foreground">
-            David works with tarot, Lenormand, astrology dice, oracle decks, cowrie shells, and pendulum. 
-            His approach is grounded, structured, and non-predictive. He does not tell you what will happen. 
-            He helps you see what is.
+            David's work is deeply informed by <span className="text-foreground/80 font-medium italic">A Course in Miracles</span>, particularly its teachings on perception, forgiveness, responsibility, and the quiet authority that emerges when illusion is relinquished rather than resisted. His facilitation emphasizes choice over compulsion, clarity over reassurance, and love expressed through honesty rather than sentimentality. This framework allows his sessions to remain grounded, non-dogmatic, and profoundly practical—even when engaging symbolic and esoteric material.
           </p>
           
-          <div className="pt-4 border-l-2 border-gold pl-6">
-            <p className="text-foreground text-2xl font-light italic">
-              This is not mysticism. This is discernment.
+          <p className="text-muted-foreground">
+            At the heart of his practice is <span className="text-gold font-medium">The Clearing™</span>, a structured, one-to-one guidance experience designed to dissolve confusion by illuminating the underlying pattern at work. David also works with tarot as a reflective and revelatory tool, supported by a broad range of divinatory systems including Lenormand cards, astrology-based tools, oracle decks, cowrie shells, and pendulum work. These modalities are used not to predict outcomes, but to surface truth, restore agency, and support self-sovereign decision-making.
+          </p>
+          
+          <div className="border-l-2 border-gold pl-6 py-4">
+            <p className="text-foreground italic font-light text-xl md:text-2xl">
+              Known for his calm presence, perceptive insight, and ethical restraint, David brings both lightness and seriousness to his work—holding space that is compassionate without being indulgent, and powerful without being forceful.
             </p>
           </div>
-
-          <div className="flex items-center gap-8 pt-6">
-            <div className="flex items-center gap-3 text-muted-foreground/60 hover:text-gold transition-colors">
-              <SiTiktok className="w-6 h-6" />
-              <span className="text-base tracking-wide">TikTok</span>
-            </div>
-            <div className="flex items-center gap-3 text-muted-foreground/60 hover:text-gold transition-colors">
-              <SiInstagram className="w-6 h-6" />
-              <span className="text-base tracking-wide">Instagram</span>
-            </div>
-          </div>
+          
+          <p className="text-muted-foreground">
+            His sessions are particularly well-suited for those who are ready to meet themselves honestly, reclaim their inner authority, and choose with integrity rather than fear. Drawing from the principles of <span className="text-foreground/80 font-medium italic">A Course in Miracles</span> and his deep familiarity with esoteric and occult traditions, David's work resonates with audiences seeking authentic spiritual guidance rooted in both ancient wisdom and contemporary clarity.
+          </p>
         </div>
       </div>
     </SectionShell>

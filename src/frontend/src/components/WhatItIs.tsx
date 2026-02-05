@@ -3,7 +3,7 @@ import SectionShell from './SectionShell';
 
 export default function WhatItIs() {
   return (
-    <SectionShell accentLabel="The Foundation">
+    <SectionShell accentLabel="The Foundation" motifVariant="grain" withFlourishDivider>
       <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tighter mb-16 text-center">
         What The Clearing™ Is
       </h2>

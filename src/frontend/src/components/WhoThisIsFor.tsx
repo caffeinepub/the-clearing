@@ -3,7 +3,7 @@ import SectionShell from './SectionShell';
 
 export default function WhoThisIsFor() {
   return (
-    <SectionShell accentLabel="Readiness">
+    <SectionShell accentLabel="Readiness" motifVariant="star" backgroundVariant="subtle">
       <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tighter mb-16 text-center">
         Who This Is For / Not For
       </h2>

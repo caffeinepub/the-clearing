@@ -1,55 +1,44 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Landing page copy updates for connection/benefits and Readiness section reordering",
+  "title": "Remove Practitioner banner and refine Access Code gate visuals",
   "requirements": [
     {
-      "id": "REQ-18",
-      "summary": "Update “After the Session” copy to remove “no ongoing relationship” while welcoming bounded connection without encouraging dependency.",
+      "id": "REQ-29",
+      "summary": "Remove the Aurora Arcana banner image from the PractitionerAuthority section while keeping TikTok and Instagram links intact.",
       "acceptanceCriteria": [
-        "In frontend/src/components/WhatToExpect.tsx under the “After the Session” subsection, the phrase asserting “no ongoing relationship” (or equivalent) is removed.",
-        "Replacement text explicitly communicates that clients should not become dependent on the practitioner/offering.",
-        "Replacement text explicitly communicates that ongoing connection/contact is welcome/possible (within appropriate boundaries), without implying an obligation or dependency.",
-        "All updated copy is in English."
+        "In frontend/src/components/PractitionerAuthority.tsx, the bottom banner <img> block is removed (or otherwise not rendered) so the banner is no longer shown on the landing page.",
+        "The TikTok link to https://tiktok.com/@auroraarcanallc remains visible and functional.",
+        "The Instagram link to https://instagram.com/auroraarcanallc remains visible and functional.",
+        "No other PractitionerAuthority content (headshot, biography copy) is removed as part of this change."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/WhatToExpect.tsx",
+          "path": "frontend/src/components/PractitionerAuthority.tsx",
           "operation": "modify",
-          "description": "Revise the “After the Session” paragraph(s) to remove the “no ongoing relationship” language and replace it with English copy that (1) reinforces self-responsibility/non-dependence and (2) permits future contact/continued connection in clear, bounded terms (e.g., optional check-ins, future sessions, periodic touchpoints), without implying obligation or reliance."
+          "description": "Remove (or conditionally disable) the bottom \"Aurora Arcana Banner\" rendering block so no banner image is displayed, leaving the headshot, bio copy, and TikTok/Instagram social links unchanged and functional."
         }
       ]
     },
     {
-      "id": "REQ-19",
-      "summary": "Reorder landing-page section render order so Readiness (<WhoThisIsFor />) appears immediately after Foundation (<WhatItIs />).",
+      "id": "REQ-30",
+      "summary": "Visually enhance the access-code gate screen to feel more enticing and mysterious while preserving the dark + gold design and keeping gate behavior unchanged.",
       "acceptanceCriteria": [
-        "In frontend/src/App.tsx, <WhoThisIsFor /> is rendered immediately after <WhatItIs />.",
-        "No landing-page section components are deleted; only ordering is changed.",
-        "The page still renders all sections (Hero, WhatItIs, WhoThisIsFor/Readiness, WhatToExpect, SessionStructure, PractitionerAuthority, PriceAndValue, EthicsAndBoundaries, ReadyToBookCTA, Footer)."
+        "The locked gate UI in frontend/src/components/AccessCodeGate.tsx is visually enhanced (e.g., richer background treatment, more deliberate lighting/glow, subtle motion/animation, improved typography/spacing) while preserving the current dark + gold palette.",
+        "User-facing text on the gate remains in English.",
+        "The functional behavior of the gate remains unchanged: code \"1122\" unlocks, incorrect codes show an error, and sessionStorage persistence continues to work as currently implemented.",
+        "The refined visuals do not reduce usability: input is clearly discoverable, error text remains legible, and the page works on mobile and desktop sizes."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/App.tsx",
+          "path": "frontend/src/components/AccessCodeGate.tsx",
           "operation": "modify",
-          "description": "Change only the JSX render order of landing-page sections so <WhoThisIsFor /> is placed immediately after <WhatItIs />, keeping all other sections present and functional (copy/order change only; no deletions)."
-        }
-      ]
-    },
-    {
-      "id": "REQ-20",
-      "summary": "Strengthen “What to Expect from The Clearing” copy to communicate concrete practical benefits while preserving readiness-filtering and existing disclaimers.",
-      "acceptanceCriteria": [
-        "frontend/src/components/WhatToExpect.tsx contains updated/expanded copy that clearly enumerates concrete, practical benefits/outcomes a participant can expect from the session.",
-        "The revised copy preserves a readiness filter (e.g., requiring willingness to engage, responsibility, discomfort tolerance) and does not read as hype-driven or manipulative.",
-        "The updated copy remains consistent with existing constraints already stated in the section (non-predictive tarot, not therapy, active engagement, not recorded, 90-minute session).",
-        "All revised/added user-facing text is in English."
-      ],
-      "file_operations": [
+          "description": "Refine the locked-gate layout styling only (no logic changes): add a more deliberate layered background treatment, enhance gold glow/lighting around the lock + call-to-action, improve typography/spacing hierarchy, and introduce subtle, non-distracting animation/motion accents while keeping all user-facing text in English and preserving the existing code-check + sessionStorage behavior (code remains \"1122\")."
+        },
         {
-          "path": "frontend/src/components/WhatToExpect.tsx",
+          "path": "frontend/src/index.css",
           "operation": "modify",
-          "description": "Update/expand the user-facing English copy within “What to Expect from The Clearing” to more concretely describe practical, tangible outcomes (e.g., clarifying decisions, naming the real issue, surfacing patterns/choices, identifying next steps, distinguishing signal vs. noise) while maintaining the readiness filter and keeping all existing constraints/disclaimers intact (tarot is reflective/non-predictive, not therapy, active engagement, not recorded, 90 minutes)."
+          "description": "Add/adjust global utility classes and keyframe animations used by the AccessCodeGate visuals (e.g., subtle shimmer/ambient glow/slow drift), ensuring they stay within the existing dark + gold palette and remain responsive/accessible (legible text, non-obscuring effects)."
         }
       ]
     }

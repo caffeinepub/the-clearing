@@ -2,8 +2,8 @@ import { Heart } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="py-16 px-6 border-t border-gold/20 bg-card/20">
-      <div className="max-w-4xl mx-auto space-y-8">
+    <footer className="py-16 px-6 border-t border-gold/20 bg-card/20 motif-grain">
+      <div className="max-w-4xl mx-auto space-y-8 motif-content">
         <div className="h-px w-full bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
         
         <p className="text-center text-2xl md:text-3xl font-light text-foreground italic tracking-wide">

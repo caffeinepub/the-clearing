@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 29,
+  "projectStateVersion": 39,
   "summary": "A web-based booking and payment DApp for “The Clearing™” (a 90‑minute, one-to-one, non-predictive tarot-based clarity session). The React/Tailwind frontend serves a high-authority landing page, supports Internet Identity authentication, can optionally gate access via invite/access code screens, forces first-time users to complete a profile (name/email), lets authenticated users pick an available date/time and pay via Stripe Checkout, and shows payment success/failure pages. An admin-only dashboard allows configuring weekly availability and managing bookings, including adding a virtual meeting link for paid sessions. The Motoko backend canister implements access control (first admin via secret token), stores user profiles, availability slots, bookings, and integrates with Stripe via HTTPS outcalls to create Checkout sessions and query session status. The repo also includes a build-template scaffolding (frontend/backend canister configs, scripts, and tooling) for deployment packaging.",
   "architectural_notes": [
     "Internet Computer architecture: Motoko canister backend + React SPA frontend using generated actor interface (createActorWithConfig).",
@@ -26,7 +26,7 @@
     "BookingSection time-slot generation is simplistic (hourly only, ignores minutes/15-min increments and blackoutDates/isRecurring semantics) and does not check already-booked times client-side.",
     "Environment variable name typo risk in blob storage module (CAFFFEINE_STORAGE_CASHIER_PRINCIPAL has triple 'F'), which may break configuration if used."
   ],
-  "isFixRequest": false,
+  "isFixRequest": true,
   "generatedImages": [
     {
       "filename": "frontend/public/assets/generated/practitioner-headshot.dim_400x400.jpg",
@@ -394,6 +394,86 @@
         "REQ-20"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-add-subtle-elegant-professional-mystical-esoteric-visual-stimulation-across-the-landing-page-by-introducing-a-consistent-system-of-background-motifs-tarot-esoteric-inspired-symbols-as-faint-overlays-corner-marks-and-or-section-dividers-that-feels-thought-provoking-and-spiritually-authoritative-without-feeling-cult-like",
+      "title": "Add subtle, elegant, professional “mystical/esoteric” visual stimulation across the landing page by introducing a consistent system of background motifs (tarot/esoteric-inspired symbols as faint overlays, corner marks, and/or section dividers) that feels thought-provoking and spiritually authoritative without feeling cult-like.",
+      "reqIds": [
+        "REQ-21"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-the-motif-system-using-static-frontend-assets-and-reusable-styling-so-it-is-easy-to-apply-consistently-add-utility-classes-and-or-a-reusable-wrapper-approach-e-g-enhancements-to-frontend-src-components-sectionshell-tsx-and-section-components-to-place-motif-overlays-behind-content-with-safe-layering-no-interference-with-clicks-selection",
+      "title": "Implement the motif system using static frontend assets and reusable styling so it is easy to apply consistently: add utility classes and/or a reusable wrapper approach (e.g., enhancements to frontend/src/components/SectionShell.tsx and section components) to place motif overlays behind content with safe layering (no interference with clicks/selection).",
+      "reqIds": [
+        "REQ-22"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-keep-all-user-facing-text-in-english-and-do-not-add-any-copy-that-implies-prediction-occult-claims-or-coercive-cult-like-framing-if-any-new-microcopy-is-introduced-e-g-tiny-decorative-labels-it-must-remain-neutral-mature-and-professional",
+      "title": "Keep all user-facing text in English and do not add any copy that implies prediction, occult “claims,” or coercive/cult-like framing; if any new microcopy is introduced (e.g., tiny decorative labels), it must remain neutral, mature, and professional.",
+      "reqIds": [
+        "REQ-23"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-practitioner-biography-copy-rendered-in-frontend-src-components-practitionerauthority-tsx-to-use-the-user-provided-about-the-practitioner-draft-as-the-primary-source-text-keeping-all-user-facing-text-in-english",
+      "title": "Update the practitioner biography copy rendered in frontend/src/components/PractitionerAuthority.tsx to use the user-provided “About the Practitioner” draft as the primary source text, keeping all user-facing text in English.",
+      "reqIds": [
+        "REQ-24"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-sprinkle-references-throughout-the-practitionerauthority-section-copy-indicating-that-david-tessis-has-substantial-familiarity-and-expertise-with-a-course-in-miracles-acim-and-that-this-foundation-makes-the-work-especially-resonant-for-audiences-aligned-with-acim-as-well-as-broader-esoteric-occult-material-without-adding-any-predictive-fortune-telling-framing",
+      "title": "Sprinkle references throughout the PractitionerAuthority section copy indicating that David Tessis has substantial familiarity and expertise with A Course in Miracles (ACIM), and that this foundation makes the work especially resonant for audiences aligned with ACIM as well as broader esoteric/occult material—without adding any predictive/fortune-telling framing.",
+      "reqIds": [
+        "REQ-25"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-make-the-aurora-arcana-business-logo-more-prominently-featured-in-the-practitionerauthority-section-by-increasing-its-visual-size-and-adding-a-highlighted-treatment-e-g-subtle-glow-halo-framed-card-or-accent-border-and-place-it-directly-above-or-below-the-social-media-icons-tiktok-instagram",
+      "title": "Make the Aurora Arcana business logo more prominently featured in the PractitionerAuthority section by increasing its visual size and adding a highlighted treatment (e.g., subtle glow/halo, framed card, or accent border) and place it directly above or below the social media icons (TikTok/Instagram).",
+      "reqIds": [
+        "REQ-26"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-in-frontend-src-components-practitionerauthority-tsx-replace-the-existing-aurora-arcana-logo-rendering-the-current-standalone-logo-image-block-with-the-user-uploaded-banner-image-chatgpt-image-feb-5-2026-11-08-20-am-png-served-as-a-frontend-static-asset-and-render-this-banner-at-the-bottom-of-the-practitionerauthority-section-below-the-practitioner-bio-content",
+      "title": "In frontend/src/components/PractitionerAuthority.tsx, replace the existing Aurora Arcana logo rendering (the current standalone logo image block) with the user-uploaded banner image “ChatGPT Image Feb 5, 2026, 11_08_20 AM.png”, served as a frontend static asset, and render this banner at the bottom of the PractitionerAuthority section (below the practitioner bio content).",
+      "reqIds": [
+        "REQ-27"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-in-frontend-src-components-practitionerauthority-tsx-update-the-opening-bio-sentence-to-remove-the-phrase-describing-david-tessis-as-a-spiritual-guide-and-replace-it-with-the-exact-user-provided-sentence-david-tessis-is-a-seasoned-esoteric-educator-tarot-practitioner-and-certified-life-and-health-coch-with-nearly-20-yers-of-experience-in-divination-and-over-six-years-of-professional-coaching-practice",
+      "title": "In frontend/src/components/PractitionerAuthority.tsx, update the opening bio sentence to remove the phrase describing David Tessis as a “spiritual guide” and replace it with the exact user-provided sentence: “David Tessis is a seasoned esoteric educator, tarot practitioner, and certified life and health coch with nearly 20 yers of experience in divination and over six years of professional coaching practice.”",
+      "reqIds": [
+        "REQ-28"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-the-aurora-arcana-banner-image-rendering-from-the-practitionerauthority-section-so-no-banner-is-displayed-at-the-bottom-of-the-section-while-keeping-the-existing-tiktok-and-instagram-access-links-intact",
+      "title": "Remove the Aurora Arcana banner image rendering from the PractitionerAuthority section so no banner is displayed at the bottom of the section, while keeping the existing TikTok and Instagram access links intact.",
+      "reqIds": [
+        "REQ-29"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-refine-the-access-code-gate-entry-page-the-screen-shown-when-the-user-must-enter-code-1122-to-feel-more-visually-enticing-mysterious-engaging-and-provoking-while-keeping-the-ui-readable-and-aligned-with-the-existing-dark-gold-design-system",
+      "title": "Refine the access-code gate entry page (the screen shown when the user must enter code 1122) to feel more visually enticing, mysterious, engaging, and provoking, while keeping the UI readable and aligned with the existing dark + gold design system.",
+      "reqIds": [
+        "REQ-30"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -460,6 +540,42 @@
     {
       "id": "AR-12",
       "summary": "Revise “What to Expect From The Clearing” copy to more clearly communicate immense practical/tangible benefits and value while still filtering for readiness (informative, not seductive)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-13",
+      "summary": "Add subtle, clean, elegant visual stimulation to the landing page using mystical/tarot/esoteric symbols (e.g., background motifs or strategic accents) to evoke spiritual authority and seriousness without feeling cult-like",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-14",
+      "summary": "Change the offering price back to $177 (revert from $500)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-15",
+      "summary": "Update Practitioner section social links: remove existing links and include only @auroraarcanallc on TikTok and Instagram; add the provided logo asset",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-16",
+      "summary": "Update Practitioner/Facilitator content to state the facilitator is the founder of Aurora Arcana and refresh Practitioner section copy using the user-provided draft as inspiration",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-17",
+      "summary": "Update Practitioner section copy using the provided draft and sprinkle references to A Course in Miracles as a foundational influence; position the work for audiences resonant with ACIM and broader esoteric/occult material (without implying prediction)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-20",
+      "summary": "Update Practitioner section copy to remove/avoid calling David Tessis a “spiritual guide”; replace the opening line with: “David Tessis is a seasoned esoteric educator, tarot practitioner, and certified life and health coach with nearly 20 years of experience in divination and over six years of professional coaching practice.”",
       "reqIds": [],
       "status": "pending"
     }

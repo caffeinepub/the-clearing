@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden motif-grain">
       {/* Background image with enhanced treatment */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -16,6 +16,19 @@ export default function Hero() {
       
       {/* Gold accent glow */}
       <div className="absolute inset-0 bg-gradient-to-t from-gold/5 via-transparent to-transparent" />
+      
+      {/* Subtle alchemy circle motif */}
+      <div 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] pointer-events-none"
+        style={{
+          backgroundImage: 'url(/assets/generated/alchemy-circle-line.dim_1024x1024.png)',
+          backgroundSize: 'contain',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center',
+          opacity: 0.03
+        }}
+        aria-hidden="true"
+      />
       
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
         {/* Invitation badge */}

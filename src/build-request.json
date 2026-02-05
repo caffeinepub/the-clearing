@@ -1,74 +1,57 @@
 {
   "kind": "build_request",
-  "title": "Update landing-page copy for connection and benefits; reorder Readiness section near top",
+  "title": "Remove Practitioner banner and further refine Access Code gate visuals",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-18",
-      "text": "Update the “After the Session” copy in the “What to Expect from The Clearing” section (frontend/src/components/WhatToExpect.tsx) to remove the statement that there is “no ongoing relationship,” and replace it with wording that (a) clearly avoids client dependency and (b) still welcomes/permits ongoing connection (e.g., future contact or staying connected) in a bounded, non-dependent way. Use English for all user-facing text.",
+      "id": "REQ-29",
+      "text": "Remove the Aurora Arcana banner image rendering from the PractitionerAuthority section so no banner is displayed at the bottom of the section, while keeping the existing TikTok and Instagram access links intact.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "recent-messages-4"
+          "msg-1"
         ],
         "quotes": [
-          "Let's change the copy that says in \"after the session\" that there will be no \"on-going\" relationship. While I don't want my clients to be dependent on my offerings, I do want to establish connections with them."
+          "The banner is not being displayed correctly. Just forget about it. Keep the tiktok and insta access links though."
         ]
       },
       "acceptanceCriteria": [
-        "In frontend/src/components/WhatToExpect.tsx under the “After the Session” subsection, the phrase asserting “no ongoing relationship” (or equivalent) is removed.",
-        "Replacement text explicitly communicates that clients should not become dependent on the practitioner/offering.",
-        "Replacement text explicitly communicates that ongoing connection/contact is welcome/possible (within appropriate boundaries), without implying an obligation or dependency.",
-        "All updated copy is in English."
+        "In frontend/src/components/PractitionerAuthority.tsx, the bottom banner <img> block is removed (or otherwise not rendered) so the banner is no longer shown on the landing page.",
+        "The TikTok link to https://tiktok.com/@auroraarcanallc remains visible and functional.",
+        "The Instagram link to https://instagram.com/auroraarcanallc remains visible and functional.",
+        "No other PractitionerAuthority content (headshot, biography copy) is removed as part of this change."
       ]
     },
     {
-      "id": "REQ-19",
-      "text": "Reorder the landing-page sections so the “Readiness” section (currently rendered by frontend/src/components/WhoThisIsFor.tsx) appears immediately after the “Foundation” section (frontend/src/components/WhatItIs.tsx) near the top of the landing page. Implement by updating the render order in frontend/src/App.tsx without removing any sections.",
+      "id": "REQ-30",
+      "text": "Refine the access-code gate entry page (the screen shown when the user must enter code 1122) to feel more visually enticing, mysterious, engaging, and provoking, while keeping the UI readable and aligned with the existing dark + gold design system.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "recent-messages-4"
+          "msg-1"
         ],
         "quotes": [
-          "let's put the \"Readiness\" section right after the Foundation section at the top."
+          "Also, can we refine the \"gate\" entry page where we enter the access code to be like... more visually enticing and mysterious and engaging and provoking?"
         ]
       },
       "acceptanceCriteria": [
-        "In frontend/src/App.tsx, <WhoThisIsFor /> is rendered immediately after <WhatItIs />.",
-        "No landing-page section components are deleted; only ordering is changed.",
-        "The page still renders all sections (Hero, WhatItIs, WhoThisIsFor/Readiness, WhatToExpect, SessionStructure, PractitionerAuthority, PriceAndValue, EthicsAndBoundaries, ReadyToBookCTA, Footer)."
-      ]
-    },
-    {
-      "id": "REQ-20",
-      "text": "Revise the copy in the “What to Expect from The Clearing” section (frontend/src/components/WhatToExpect.tsx) to more strongly and concretely communicate the immense opportunity/value and specific practical benefits of the session, while still maintaining readiness-filtering language and an informative (not “seductive”) tone. Use practical, tangible, visible, helpful outcome language (e.g., clarity on decisions, naming the real issue, identifying next steps, seeing patterns/choices). Use English for all user-facing text.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "recent-messages-4"
-        ],
-        "quotes": [
-          "let's add some immense value and highlights to the benefits of this offering in the \"What to Expect From the Clearing\" copy part.",
-          "stress and let it be known the availability of the immense opportunity and value and specific practical benefits there can be gained from The Clearing experience - not to seduce them, but to inform them in practical, tangible, visible, helpful ways the impact the clarity this offering can provide will provide them with."
-        ]
-      },
-      "acceptanceCriteria": [
-        "frontend/src/components/WhatToExpect.tsx contains updated/expanded copy that clearly enumerates concrete, practical benefits/outcomes a participant can expect from the session.",
-        "The revised copy preserves a readiness filter (e.g., requiring willingness to engage, responsibility, discomfort tolerance) and does not read as hype-driven or manipulative.",
-        "The updated copy remains consistent with existing constraints already stated in the section (non-predictive tarot, not therapy, active engagement, not recorded, 90-minute session).",
-        "All revised/added user-facing text is in English."
+        "The locked gate UI in frontend/src/components/AccessCodeGate.tsx is visually enhanced (e.g., richer background treatment, more deliberate lighting/glow, subtle motion/animation, improved typography/spacing) while preserving the current dark + gold palette.",
+        "User-facing text on the gate remains in English.",
+        "The functional behavior of the gate remains unchanged: code \"1122\" unlocks, incorrect codes show an error, and sessionStorage persistence continues to work as currently implemented.",
+        "The refined visuals do not reduce usability: input is clearly discoverable, error text remains legible, and the page works on mobile and desktop sizes."
       ]
     }
   ],
   "constraints": [
-    "Do not edit files under frontend/src/components/ui (compose existing UI components only).",
-    "Do not change application functionality (copy and section ordering only)."
+    "Do not change the access code value (must remain \"1122\").",
+    "Keep all user-facing text in English.",
+    "Do not remove the TikTok and Instagram access links in PractitionerAuthority.",
+    "Do not modify files under frontend/src/components/ui or other frontend immutable paths; compose with existing UI components instead."
   ],
   "nonGoals": [
-    "Do not add new booking/payment features or change Stripe/availability behavior.",
-    "Do not change authentication or access-gating behavior.",
-    "Do not redesign the overall visual theme beyond what is necessary to accommodate the reordered section and updated copy."
+    "Do not add or change backend canister logic.",
+    "Do not introduce invite-link gating; keep the manual access-code gate flow.",
+    "Do not redesign or reorder landing-page sections beyond the banner removal in PractitionerAuthority."
   ],
   "imageRequirements": {
     "required": [],
