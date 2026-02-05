@@ -1,0 +1,27 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-replace-the-headshot-image-used-in-the-facilitator-part-of-the-landing-page-currently-implemented-in-the-practitionerauthority-section-with-the-user-uploaded-image-file-whatsapp-image-2026-02-05-at-9-44-49-am-jpeg-and-serve-it-as-a-frontend-static-asset",
+      "featureTitle": "Replace the headshot image used in the “Facilitator” part of the landing page (currently implemented in the PractitionerAuthority section) with the user-uploaded image file “WhatsApp Image 2026-02-05 at 9.44.49 AM.jpeg”, and serve it as a frontend static asset.",
+      "files": [
+        "frontend/src/components/PractitionerAuthority.tsx"
+      ],
+      "components": [
+        "stripe@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "http-outcalls@3.0.0",
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

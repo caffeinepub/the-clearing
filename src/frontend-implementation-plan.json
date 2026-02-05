@@ -1,0 +1,28 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Swap Facilitator/Practitioner headshot to new uploaded static asset",
+  "requirements": [
+    {
+      "id": "REQ-3",
+      "summary": "Replace the PractitionerAuthority (Facilitator/Practitioner) headshot image with the newly uploaded photo served as a frontend static asset.",
+      "acceptanceCriteria": [
+        "The PractitionerAuthority (Facilitator/Practitioner) headshot <img> no longer references the old image path and instead references the new uploaded photo as a static asset (e.g., under frontend/public/assets/...).",
+        "The new image is included in the repository under frontend/public so it is served directly by the frontend build (no backend fetching).",
+        "The headshot renders correctly in the PractitionerAuthority section in both mobile and desktop layouts without stretching (maintains a square crop/aspect)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/facilitator-headshot.user-upload.dim_400x400.jpg",
+          "operation": "create",
+          "description": "Add the cropped/resized, web-optimized JPG derived from “WhatsApp Image 2026-02-05 at 9.44.49 AM.jpeg” as a centered square headshot (400x400) so it can be served directly as a static frontend asset."
+        },
+        {
+          "path": "frontend/src/components/PractitionerAuthority.tsx",
+          "operation": "modify",
+          "description": "Update the PractitionerAuthority headshot <img> to reference the new static asset at frontend/public/assets/generated/facilitator-headshot.user-upload.dim_400x400.jpg (replacing the previous /assets/generated/practitioner-headshot.user-upload.dim_400x400.jpg). Keep/verify square aspect and object-cover styling to prevent stretching on mobile/desktop."
+        }
+      ]
+    }
+  ]
+}

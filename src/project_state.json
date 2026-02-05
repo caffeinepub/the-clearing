@@ -1,0 +1,300 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 15,
+  "summary": "A web-based booking and payment DApp for “The Clearing™” (a 75‑minute, one-to-one, non-predictive tarot-based clarity session). The React/Tailwind frontend serves a high-authority landing page, supports Internet Identity authentication, can optionally gate access via invite/access code screens, forces first-time users to complete a profile (name/email), lets authenticated users pick an available date/time and pay via Stripe Checkout, and shows payment success/failure pages. An admin-only dashboard allows configuring weekly availability and managing bookings, including adding a virtual meeting link for paid sessions. The Motoko backend canister implements access control (first admin via secret token), stores user profiles, availability slots, bookings, and integrates with Stripe via HTTPS outcalls to create Checkout sessions and query session status. The repo also includes a build-template scaffolding (frontend/backend canister configs, scripts, and tooling) for deployment packaging.",
+  "architectural_notes": [
+    "Internet Computer architecture: Motoko canister backend + React SPA frontend using generated actor interface (createActorWithConfig).",
+    "Authentication via Internet Identity using @dfinity/auth-client; identity context provided by a React Context provider.",
+    "Role-based access control implemented in Motoko (admin/user/guest) with a first-admin bootstrap using an environment variable token and a caller-provided secret.",
+    "Frontend data access centralized as React Query hooks (useQuery/useMutation) with query invalidation on mutations.",
+    "Admin token handling on frontend via URL hash secret extraction and sessionStorage persistence (getSecretParameter).",
+    "Stripe integration performed server-side in the canister using IC HTTPS outcalls (ic:http_request) with a transform function to strip headers.",
+    "UI built with Tailwind + shadcn/ui components; next-themes used for dark mode theming.",
+    "Frontend uses lightweight hash-based “routing” by inspecting window.location.hash for payment result pages rather than a router library.",
+    "Availability modeled as recurring weekly slots with optional blackout dates, exposed publicly for the booking UI.",
+    "Includes a generic blob-storage mixin/module for Caffeine storage gateway authorization and cycle refilling (appears template/optional in this project)."
+  ],
+  "known_issues": [
+    "Backend time handling is incomplete: extractTimeOfDay() always returns 00:00 and extractDayOfWeek() always returns Monday, making availability enforcement and conflict checking incorrect.",
+    "Frontend booking flow creates a Stripe Checkout session but does not call backend createBooking(); bookings may never be created/stored unless another flow exists outside the provided code.",
+    "No automated payment confirmation flow is present (e.g., Stripe webhooks or post-payment session verification) to update Booking.paymentStatus; admin-only manual updates exist but are not wired in the UI shown.",
+    "getCallerUserProfile() traps for anonymous callers (requires #user), but the frontend may still attempt to query it when using an anonymous actor, potentially producing avoidable errors.",
+    "React Query invalidation keys are inconsistent: some mutations invalidate ['bookings'] while the primary admin list query uses ['allBookings'], so UI may not refresh as expected.",
+    "Stripe Checkout request body uses shipping_address_collection[allowed_countries][0] for every country in a loop (index not incremented), likely resulting in only one allowed country being honored.",
+    "Sensitive Stripe secret key is stored in canister memory (not shown as stable/encrypted) and may be lost on upgrade; persistence and secret management are not addressed.",
+    "Data stores (userProfiles Map, bookings Map, stripeConfiguration var, availability list) are not implemented as stable variables; state will be lost across canister upgrades.",
+    "BookingSection time-slot generation is simplistic (hourly only, ignores minutes/15-min increments and blackoutDates/isRecurring semantics) and does not check already-booked times client-side.",
+    "Environment variable name typo risk in blob storage module (CAFFFEINE_STORAGE_CASHIER_PRINCIPAL has triple 'F'), which may break configuration if used."
+  ],
+  "isFixRequest": false,
+  "imageRequirements": "## Edit Images\n- Crop/resize the uploaded photo to a centered square headshot and export as a web-optimized JPG (WhatsApp Image 2026-02-05 at 9.44.49 AM.jpeg > facilitator-headshot.user-upload.dim_400x400.jpg)",
+  "generatedImages": [
+    {
+      "filename": "frontend/public/assets/generated/practitioner-headshot.dim_400x400.jpg",
+      "description": "Generated dimmed practitioner headshot image used in the authority/practitioner section.",
+      "targetWidth": 400,
+      "targetHeight": 400
+    }
+  ],
+  "existing_features": [
+    {
+      "id": "IF-1",
+      "title": "Marketing landing page content sections",
+      "synonyms": [
+        "Landing page",
+        "Marketing site sections"
+      ],
+      "description": "Presents a structured landing page for The Clearing™ including Hero CTA, “What It Is”, “What To Expect”, session structure, audience fit (“for/not for”), practitioner profile with social links, pricing, ethics/boundaries, and footer attribution.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-2",
+      "title": "Dark mode theming and design system",
+      "synonyms": [
+        "ThemeProvider",
+        "Tailwind tokens"
+      ],
+      "description": "Implements a minimalist dark-mode-first UI using Tailwind with OKLCH design tokens and next-themes ThemeProvider to support theme switching/system preference.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-3",
+      "title": "Internet Identity authentication",
+      "synonyms": [
+        "II login",
+        "AuthClient"
+      ],
+      "description": "Provides login/logout and persisted identity loading using @dfinity/auth-client and a React Context provider; supports long-lived delegations (30 days) with idle handling disabled by default.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-4",
+      "title": "Backend actor creation and identity-aware client",
+      "synonyms": [
+        "useActor",
+        "createActorWithConfig"
+      ],
+      "description": "Creates an anonymous actor when not authenticated and an identity-bound actor when authenticated; on actor creation it initializes access control and triggers global query invalidation/refetch when identity changes.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-5",
+      "title": "Role-based access control with admin bootstrap secret",
+      "synonyms": [
+        "AccessControl",
+        "Admin token bootstrap"
+      ],
+      "description": "Motoko access-control system with roles (admin/user/guest). First eligible caller can become admin by providing a matching secret token (compared against CAFFEINE_ADMIN_TOKEN env var). Includes admin role assignment and admin checks.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-6",
+      "title": "Secure admin token ingestion from URL hash",
+      "synonyms": [
+        "URL secret handling",
+        "getSecretParameter"
+      ],
+      "description": "Extracts sensitive parameters (e.g., caffeineAdminToken) from the URL hash, persists them in sessionStorage, and removes them from the URL to reduce history/referrer leakage.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-7",
+      "title": "User profile storage (name/email) with forced first-time setup",
+      "synonyms": [
+        "Profile setup modal",
+        "UserProfile"
+      ],
+      "description": "Backend stores a per-principal user profile (name and email). Frontend enforces completion via a modal that cannot be dismissed until a profile is saved.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-8",
+      "title": "Stripe configuration (admin-only)",
+      "synonyms": [
+        "Stripe secret key setup",
+        "StripeSetupModal"
+      ],
+      "description": "Admin-only Stripe configuration workflow: backend stores Stripe secret key and allowed countries; frontend shows a modal on admin login if Stripe is not configured.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-9",
+      "title": "Stripe Checkout session creation via canister outcalls",
+      "synonyms": [
+        "Checkout session",
+        "Stripe outcalls"
+      ],
+      "description": "Backend calls Stripe’s Checkout Sessions API using IC HTTPS outcalls; frontend initiates checkout for a predefined $177 “The Clearing™ Session” item and redirects the browser to the returned Checkout URL.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-10",
+      "title": "Payment success and failure pages",
+      "synonyms": [
+        "Payment result routing",
+        "Checkout return"
+      ],
+      "description": "After Stripe redirects back to /#/payment-success or /#/payment-failure, the app shows full-screen success/failure pages. The success page displays booking details read from sessionStorage (pendingBooking).",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-11",
+      "title": "Availability modeling and admin availability editor",
+      "synonyms": [
+        "Time slots",
+        "Schedule management"
+      ],
+      "description": "Backend stores a list of Availability slots (day-of-week, start/end time, recurring flag, blackout dates). Admin UI supports adding/removing/editing slots with day/time selectors and saving changes to the backend.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-12",
+      "title": "Client booking UI based on availability",
+      "synonyms": [
+        "BookingSection",
+        "Calendar picker"
+      ],
+      "description": "Authenticated users can select a date using a calendar that disables days without availability, then select a time derived from availability slots (hourly generation) before proceeding to Stripe payment.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-13",
+      "title": "Bookings data model and admin booking management endpoints",
+      "synonyms": [
+        "Bookings CRUD",
+        "Booking records"
+      ],
+      "description": "Backend defines Booking records (owner, client name/email, session time, payment status, booking time, optional virtual meeting link) and provides endpoints to create, read, cancel, list by client email, list all (admin), and update payment status (admin).",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-14",
+      "title": "Admin bookings dashboard with virtual meeting link assignment",
+      "synonyms": [
+        "BookingsManager",
+        "Meeting link workflow"
+      ],
+      "description": "Admin UI lists all bookings with status badges, shows summaries of paid bookings with/without meeting links, and provides a guided dialog to add/update a Google Meet/Zoom meeting link stored on the booking.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-15",
+      "title": "HTTP outcall utility layer for GET/POST with transform",
+      "synonyms": [
+        "OutCall module",
+        "IC.http_request wrapper"
+      ],
+      "description": "Shared Motoko module wrapping IC http_request for GET/POST, adding headers (User-Agent, Idempotency-Key for POST), attaching a transform function, and decoding UTF-8 responses.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-16",
+      "title": "Stripe session status lookup",
+      "synonyms": [
+        "Payment status polling",
+        "getSessionStatus"
+      ],
+      "description": "Backend can query Stripe’s Checkout Session endpoint and returns a parsed status variant (completed/failed) including extraction of client_reference_id (principal) when present.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-17",
+      "title": "Admin dashboard container UI",
+      "synonyms": [
+        "AdminDashboard",
+        "Settings entrypoint"
+      ],
+      "description": "Frontend provides an admin-only floating settings button that opens a full-screen dashboard with tabs for availability management and booking management.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-18",
+      "title": "App access gating screens (invite/access code/restricted)",
+      "synonyms": [
+        "InviteGate",
+        "AccessCodeGate",
+        "AccessRestrictedScreen"
+      ],
+      "description": "Frontend includes dedicated gating screens/components to restrict access until an invite and/or access code condition is satisfied, showing a restricted-access screen when requirements are not met.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "feature-replace-the-image-shown-in-the-the-practitioner-section-practitionerauthority-with-the-user-uploaded-photo-from-jan-20th-at-15-13-in-this-chat-and-ensure-the-image-is-served-as-a-static-asset-from-the-frontend",
+      "title": "Replace the image shown in the “The Practitioner” section (PractitionerAuthority) with the user-uploaded photo from Jan 20th at 15:13 in this chat, and ensure the image is served as a static asset from the frontend.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-publish-the-currently-deployed-draft-of-the-app-as-the-live-published-version-without-changing-application-functionality",
+      "title": "Publish the currently deployed draft of the app as the live (published) version without changing application functionality.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-replace-the-headshot-image-used-in-the-facilitator-part-of-the-landing-page-currently-implemented-in-the-practitionerauthority-section-with-the-user-uploaded-image-file-whatsapp-image-2026-02-05-at-9-44-49-am-jpeg-and-serve-it-as-a-frontend-static-asset",
+      "title": "Replace the headshot image used in the “Facilitator” part of the landing page (currently implemented in the PractitionerAuthority section) with the user-uploaded image file “WhatsApp Image 2026-02-05 at 9.44.49 AM.jpeg”, and serve it as a frontend static asset.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Replace the “The Practitioner” section image with the user-uploaded photo (Jan 20th, 15:13)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Redesign landing page to feel more visually engaging, serious, magnetizing, and authoritative; emphasize impact/benefits with more compelling visuals/copy",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Set up a clean official hyperlink/custom domain without random codes (e.g., https://www.theclearing.caffeine) and confirm it can be shared with clients",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Increase exclusivity by restricting access so only people with a directly forwarded/invited link can view/booking-gate the app",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Update visual design/colors to include more “popping” accents (e.g., gold/metallics or authoritative pastels) while keeping a dark aesthetic if needed",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "The Clearing™",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

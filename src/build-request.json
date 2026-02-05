@@ -1,0 +1,49 @@
+{
+  "kind": "build_request",
+  "title": "Replace Facilitator headshot image with the newly uploaded photo",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-3",
+      "text": "Replace the headshot image used in the “Facilitator” part of the landing page (currently implemented in the PractitionerAuthority section) with the user-uploaded image file “WhatsApp Image 2026-02-05 at 9.44.49 AM.jpeg”, and serve it as a frontend static asset.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Can you replace the image you have for the Facilitator part with this attached one?"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The PractitionerAuthority (Facilitator/Practitioner) headshot <img> no longer references the old image path and instead references the new uploaded photo as a static asset (e.g., under frontend/public/assets/...).",
+        "The new image is included in the repository under frontend/public so it is served directly by the frontend build (no backend fetching).",
+        "The headshot renders correctly in the PractitionerAuthority section in both mobile and desktop layouts without stretching (maintains a square crop/aspect)."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not edit any files under frontend/src/components/ui or other frontend immutablePaths listed in SYSTEM_CONTEXT.",
+    "Backend (Motoko) code must not be changed for this request."
+  ],
+  "nonGoals": [
+    "No copy/layout redesign of the landing page beyond swapping the image.",
+    "No changes to access gating, booking, Stripe, or authentication flows."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": [
+      "Crop/resize the uploaded photo to a centered square headshot and export as a web-optimized JPG (WhatsApp Image 2026-02-05 at 9.44.49 AM.jpeg > facilitator-headshot.user-upload.dim_400x400.jpg)"
+    ]
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}

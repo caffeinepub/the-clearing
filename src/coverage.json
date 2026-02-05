@@ -1,0 +1,40 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-05T16:59:37.349Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 1,
+    "implemented": 1,
+    "items": [
+      {
+        "id": "REQ-3",
+        "summary": "Replace the headshot image used in the “Facilitator” part of the landing page (currently implemented in the PractitionerAuthority section) with the user-uploaded image file “WhatsApp Image 2026-02-05 at 9.44.49 AM.jpeg”, and serve it as a frontend static asset.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/public/assets/generated/facilitator-headshot.user-upload.dim_400x400.jpg",
+          "frontend/src/components/PractitionerAuthority.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/public/assets/generated/facilitator-headshot.user-upload.dim_400x400.jpg",
+          "frontend/src/components/PractitionerAuthority.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/public/assets/generated/facilitator-headshot.user-upload.dim_400x400.jpg",
+    "frontend/src/components/PractitionerAuthority.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}
