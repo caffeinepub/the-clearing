@@ -1,7 +1,7 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-05T16:59:37.349Z",
+  "generatedAt": "2026-02-05T18:58:57.406Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
@@ -11,16 +11,14 @@
     "implemented": 1,
     "items": [
       {
-        "id": "REQ-3",
-        "summary": "Replace the headshot image used in the “Facilitator” part of the landing page (currently implemented in the PractitionerAuthority section) with the user-uploaded image file “WhatsApp Image 2026-02-05 at 9.44.49 AM.jpeg”, and serve it as a frontend static asset.",
+        "id": "REQ-17",
+        "summary": "Update the landing-page copy to remove all mentions of providing/sending a session recording afterward, and replace it with copy that (1) states the session requires the participant’s active engagement and participation during the call, (2) welcomes the participant to take notes to integrate what is learned, and (3) clearly explains that a recording is intentionally not provided so the participant is not tempted to disengage with the idea of “listening to the recording later.” Use English for all user-facing text.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/public/assets/generated/facilitator-headshot.user-upload.dim_400x400.jpg",
-          "frontend/src/components/PractitionerAuthority.tsx"
+          "frontend/src/components/WhatToExpect.tsx"
         ],
         "matchedFiles": [
-          "frontend/public/assets/generated/facilitator-headshot.user-upload.dim_400x400.jpg",
-          "frontend/src/components/PractitionerAuthority.tsx"
+          "frontend/src/components/WhatToExpect.tsx"
         ]
       }
     ]
@@ -30,8 +28,7 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/public/assets/generated/facilitator-headshot.user-upload.dim_400x400.jpg",
-    "frontend/src/components/PractitionerAuthority.tsx",
+    "frontend/src/components/WhatToExpect.tsx",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

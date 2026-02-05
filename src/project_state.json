@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 15,
-  "summary": "A web-based booking and payment DApp for “The Clearing™” (a 75‑minute, one-to-one, non-predictive tarot-based clarity session). The React/Tailwind frontend serves a high-authority landing page, supports Internet Identity authentication, can optionally gate access via invite/access code screens, forces first-time users to complete a profile (name/email), lets authenticated users pick an available date/time and pay via Stripe Checkout, and shows payment success/failure pages. An admin-only dashboard allows configuring weekly availability and managing bookings, including adding a virtual meeting link for paid sessions. The Motoko backend canister implements access control (first admin via secret token), stores user profiles, availability slots, bookings, and integrates with Stripe via HTTPS outcalls to create Checkout sessions and query session status. The repo also includes a build-template scaffolding (frontend/backend canister configs, scripts, and tooling) for deployment packaging.",
+  "projectStateVersion": 27,
+  "summary": "A web-based booking and payment DApp for “The Clearing™” (a 90‑minute, one-to-one, non-predictive tarot-based clarity session). The React/Tailwind frontend serves a high-authority landing page, supports Internet Identity authentication, can optionally gate access via invite/access code screens, forces first-time users to complete a profile (name/email), lets authenticated users pick an available date/time and pay via Stripe Checkout, and shows payment success/failure pages. An admin-only dashboard allows configuring weekly availability and managing bookings, including adding a virtual meeting link for paid sessions. The Motoko backend canister implements access control (first admin via secret token), stores user profiles, availability slots, bookings, and integrates with Stripe via HTTPS outcalls to create Checkout sessions and query session status. The repo also includes a build-template scaffolding (frontend/backend canister configs, scripts, and tooling) for deployment packaging.",
   "architectural_notes": [
     "Internet Computer architecture: Motoko canister backend + React SPA frontend using generated actor interface (createActorWithConfig).",
     "Authentication via Internet Identity using @dfinity/auth-client; identity context provided by a React Context provider.",
@@ -27,7 +27,6 @@
     "Environment variable name typo risk in blob storage module (CAFFFEINE_STORAGE_CASHIER_PRINCIPAL has triple 'F'), which may break configuration if used."
   ],
   "isFixRequest": false,
-  "imageRequirements": "## Edit Images\n- Crop/resize the uploaded photo to a centered square headshot and export as a web-optimized JPG (WhatsApp Image 2026-02-05 at 9.44.49 AM.jpeg > facilitator-headshot.user-upload.dim_400x400.jpg)",
   "generatedImages": [
     {
       "filename": "frontend/public/assets/generated/practitioner-headshot.dim_400x400.jpg",
@@ -259,6 +258,118 @@
         "REQ-3"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-redesign-the-landing-page-ui-to-feel-visually-engaging-serious-magnetizing-and-high-authority-with-stronger-emphasis-on-impact-and-benefits-of-the-clearing-while-keeping-the-overall-experience-cohesive-across-all-existing-sections-hero-whatitis-whattoexpect-sessionstructure-whothisisfor-practitionerauthority-priceandvalue-ethicsandboundaries-footer",
+      "title": "Redesign the landing page UI to feel visually engaging, serious, magnetizing, and high-authority, with stronger emphasis on impact and benefits of “The Clearing™” while keeping the overall experience cohesive across all existing sections (Hero, WhatItIs, WhatToExpect, SessionStructure, WhoThisIsFor, PractitionerAuthority, PriceAndValue, EthicsAndBoundaries, Footer).",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-landing-page-color-system-and-styling-to-include-more-popping-accents-that-evoke-authority-e-g-gold-metallic-accents-and-or-authoritative-pastel-accents-while-retaining-a-dark-aesthetic-apply-the-updated-palette-consistently-across-key-ui-elements-buttons-borders-dividers-highlights-section-backgrounds",
+      "title": "Update the landing page color system and styling to include more ‘popping’ accents that evoke authority (e.g., gold/metallic accents and/or authoritative pastel accents) while retaining a dark aesthetic; apply the updated palette consistently across key UI elements (buttons, borders, dividers, highlights, section backgrounds).",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-replace-the-current-access-code-entry-gate-with-an-invite-link-gate-that-unlocks-the-landing-page-only-when-a-valid-invite-secret-is-provided-via-the-url-hash-fragment-and-then-persisted-for-the-browser-session-so-invited-users-can-access-the-page-by-opening-a-directly-forwarded-link-without-manually-entering-a-code",
+      "title": "Replace the current access-code entry gate with an invite-link gate that unlocks the landing page only when a valid invite secret is provided via the URL hash fragment (and then persisted for the browser session), so invited users can access the page by opening a directly forwarded link without manually entering a code.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-app-s-publicly-shareable-gate-page-url-can-be-clean-and-stable-no-random-codes-in-the-visible-url-and-present-user-facing-gate-copy-that-reinforces-exclusivity-by-invitation-only-while-still-allowing-invited-users-to-proceed-after-opening-the-forwarded-link",
+      "title": "Ensure the app’s publicly shareable ‘gate page’ URL can be clean and stable (no random codes in the visible URL), and present user-facing gate copy that reinforces exclusivity (‘by invitation only’) while still allowing invited users to proceed after opening the forwarded link.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-replace-the-current-invite-link-gating-behavior-with-a-manual-access-code-gate-that-unlocks-the-landing-page-only-after-the-user-enters-the-access-code-1122-on-a-dedicated-gate-screen",
+      "title": "Replace the current invite-link gating behavior with a manual access-code gate that unlocks the landing page only after the user enters the access code \"1122\" on a dedicated gate screen.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-the-manual-access-code-gate-ui-as-a-real-component-replacing-the-current-empty-placeholder-in-frontend-src-components-accesscodegate-tsx-and-wire-app-tsx-to-use-it-instead-of-frontend-src-components-invitegate-tsx",
+      "title": "Implement the manual access-code gate UI as a real component (replacing the current empty placeholder in frontend/src/components/AccessCodeGate.tsx), and wire App.tsx to use it instead of frontend/src/components/InviteGate.tsx.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-redesign-the-gate-page-visuals-and-micro-interactions-to-be-enticing-alluring-elegant-exclusive-clean-mysterious-and-rich-esoteric-occult-authority-slightly-intimidating-while-keeping-the-ui-readable-and-aligned-with-the-existing-dark-gold-design-system",
+      "title": "Redesign the gate page visuals and micro-interactions to be enticing, alluring, elegant, exclusive, clean, mysterious, and \"rich esoteric/occult authority\" (slightly intimidating), while keeping the UI readable and aligned with the existing dark + gold design system.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-re-run-the-full-build-deploy-pipeline-and-identify-the-exact-failing-step-motoko-compile-frontend-typescript-vite-build-asset-bundling-or-canister-deploy-capture-and-surface-the-full-underlying-error-output-so-the-failure-is-actionable",
+      "title": "Re-run the full build + deploy pipeline and identify the exact failing step (Motoko compile, frontend TypeScript/Vite build, asset bundling, or canister deploy). Capture and surface the full underlying error output so the failure is actionable.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-whatever-code-configuration-issue-is-causing-the-build-deploy-to-fail-without-changing-intended-application-functionality-after-the-fix-the-project-must-build-successfully-and-deploy-successfully",
+      "title": "Fix whatever code/configuration issue is causing the build/deploy to fail, without changing intended application functionality. After the fix, the project must build successfully and deploy successfully.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-replace-the-current-invite-link-gating-behavior-with-a-manual-access-code-gate-that-unlocks-the-landing-page-only-after-the-user-enters-the-access-code-1122",
+      "title": "Replace the current invite-link gating behavior with a manual access-code gate that unlocks the landing page only after the user enters the access code \"1122\".",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-the-manual-access-code-gate-ui-as-a-real-component-in-frontend-src-components-accesscodegate-tsx-currently-empty-and-wire-frontend-src-app-tsx-to-use-it-instead-of-frontend-src-components-invitegate-tsx",
+      "title": "Implement the manual access-code gate UI as a real component in frontend/src/components/AccessCodeGate.tsx (currently empty), and wire frontend/src/App.tsx to use it instead of frontend/src/components/InviteGate.tsx.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-move-the-primary-ready-to-book-call-to-action-so-it-appears-at-the-end-of-the-landing-page-after-all-informational-copy-sections-rather-than-in-the-hero-section",
+      "title": "Move the primary “Ready to Book” call-to-action so it appears at the end of the landing page (after all informational/copy sections), rather than in the hero section.",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-landing-page-copy-to-reflect-that-the-session-duration-is-90-minutes-replacing-any-existing-references-to-75-minutes",
+      "title": "Update landing-page copy to reflect that the session duration is 90 minutes (replacing any existing references to 75 minutes).",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-landing-page-copy-to-remove-all-mentions-of-providing-sending-a-session-recording-afterward-and-replace-it-with-copy-that-1-states-the-session-requires-the-participant-s-active-engagement-and-participation-during-the-call-2-welcomes-the-participant-to-take-notes-to-integrate-what-is-learned-and-3-clearly-explains-that-a-recording-is-intentionally-not-provided-so-the-participant-is-not-tempted-to-disengage-with-the-idea-of-listening-to-the-recording-later-use-english-for-all-user-facing-text",
+      "title": "Update the landing-page copy to remove all mentions of providing/sending a session recording afterward, and replace it with copy that (1) states the session requires the participant’s active engagement and participation during the call, (2) welcomes the participant to take notes to integrate what is learned, and (3) clearly explains that a recording is intentionally not provided so the participant is not tempted to disengage with the idea of “listening to the recording later.” Use English for all user-facing text.",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -281,14 +392,32 @@
       "status": "pending"
     },
     {
-      "id": "AR-4",
-      "summary": "Increase exclusivity by restricting access so only people with a directly forwarded/invited link can view/booking-gate the app",
+      "id": "AR-5",
+      "summary": "Update visual design/colors to include more “popping” accents (e.g., gold/metallics or authoritative pastels) while keeping a dark aesthetic if needed",
       "reqIds": [],
       "status": "pending"
     },
     {
-      "id": "AR-5",
-      "summary": "Update visual design/colors to include more “popping” accents (e.g., gold/metallics or authoritative pastels) while keeping a dark aesthetic if needed",
+      "id": "AR-6",
+      "summary": "Keep manual access-code gate (code 1122) and redesign the gate page to feel enticing, elegant, exclusive, clean, mysterious—rich esoteric/occult high-authority vibes (slightly intimidating)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Move the primary “Ready to book” CTA button to the end of the landing page (after the full informational/copy sections)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Update landing page copy to reflect session duration as 90 minutes (was 75 minutes)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Update landing page/session copy to remove any mention of sending a recording afterward; instead emphasize active engagement during the session, encourage note-taking for integration, and clarify recordings are intentionally not provided to support full presence",
       "reqIds": [],
       "status": "pending"
     }

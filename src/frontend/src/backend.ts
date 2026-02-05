@@ -123,6 +123,17 @@ export interface http_request_result {
     body: Uint8Array;
     headers: Array<http_header>;
 }
+export interface RSVP {
+    name: string;
+    inviteCode: string;
+    timestamp: Time;
+    attending: boolean;
+}
+export interface InviteCode {
+    created: Time;
+    code: string;
+    used: boolean;
+}
 export interface ShoppingItem {
     productName: string;
     currency: string;
@@ -216,7 +227,9 @@ export interface backendInterface {
     cancelBooking(bookingId: string): Promise<void>;
     createBooking(clientName: string, clientEmail: string, sessionTime: Time): Promise<string>;
     createCheckoutSession(items: Array<ShoppingItem>, successUrl: string, cancelUrl: string): Promise<string>;
+    generateInviteCode(): Promise<string>;
     getAllBookings(): Promise<Array<Booking>>;
+    getAllRSVPs(): Promise<Array<RSVP>>;
     getAvailableTimeSlots(): Promise<Array<Availability>>;
     getBooking(bookingId: string): Promise<Booking>;
     getBookingsForClient(clientEmail: string): Promise<Array<Booking>>;
@@ -224,6 +237,7 @@ export interface backendInterface {
     getCallerUserRole(): Promise<UserRole>;
     getFile(id: string): Promise<FileReference>;
     getFileList(_from: bigint, _to: bigint): Promise<Array<FileReference>>;
+    getInviteCodes(): Promise<Array<InviteCode>>;
     getStripeSessionStatus(sessionId: string): Promise<StripeSessionStatus>;
     getUserProfile(user: Principal): Promise<UserProfile | null>;
     isCallerAdmin(): Promise<boolean>;
@@ -231,6 +245,7 @@ export interface backendInterface {
     saveCallerUserProfile(profile: UserProfile): Promise<void>;
     setAvailableTimeSlots(slots: Array<Availability>): Promise<void>;
     setStripeConfiguration(config: StripeConfiguration): Promise<void>;
+    submitRSVP(name: string, attending: boolean, inviteCode: string): Promise<void>;
     transform(input: TransformationInput): Promise<TransformationOutput>;
     updateBookingPaymentStatus(bookingId: string, status: PaymentStatus): Promise<void>;
     updateBookingWithVirtualMeetingLink(bookingId: string, meetingLink: string): Promise<void>;
@@ -393,6 +408,20 @@ export class Backend implements backendInterface {
             return result;
         }
     }
+    async generateInviteCode(): Promise<string> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.generateInviteCode();
+                return result;
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.generateInviteCode();
+            return result;
+        }
+    }
     async getAllBookings(): Promise<Array<Booking>> {
         if (this.processError) {
             try {
@@ -405,6 +434,20 @@ export class Backend implements backendInterface {
         } else {
             const result = await this.actor.getAllBookings();
             return from_candid_vec_n10(this._uploadFile, this._downloadFile, result);
+        }
+    }
+    async getAllRSVPs(): Promise<Array<RSVP>> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.getAllRSVPs();
+                return result;
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.getAllRSVPs();
+            return result;
         }
     }
     async getAvailableTimeSlots(): Promise<Array<Availability>> {
@@ -505,6 +548,20 @@ export class Backend implements backendInterface {
             return from_candid_vec_n27(this._uploadFile, this._downloadFile, result);
         }
     }
+    async getInviteCodes(): Promise<Array<InviteCode>> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.getInviteCodes();
+                return result;
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.getInviteCodes();
+            return result;
+        }
+    }
     async getStripeSessionStatus(arg0: string): Promise<StripeSessionStatus> {
         if (this.processError) {
             try {
@@ -600,6 +657,20 @@ export class Backend implements backendInterface {
             }
         } else {
             const result = await this.actor.setStripeConfiguration(arg0);
+            return result;
+        }
+    }
+    async submitRSVP(arg0: string, arg1: boolean, arg2: string): Promise<void> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.submitRSVP(arg0, arg1, arg2);
+                return result;
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.submitRSVP(arg0, arg1, arg2);
             return result;
         }
     }

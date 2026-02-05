@@ -9,14 +9,18 @@ import Time "mo:core/Time";
 import Runtime "mo:core/Runtime";
 import Principal "mo:core/Principal";
 import List "mo:core/List";
+import Random "mo:core/Random";
 import MixinAuthorization "authorization/MixinAuthorization";
 import MixinStorage "blob-storage/Mixin";
 import Storage "blob-storage/Storage";
+import InviteLinksModule "invite-links/invite-links-module";
 
 actor {
   let accessControlState = AccessControl.initState();
   include MixinAuthorization(accessControlState);
   include MixinStorage();
+
+  let inviteState = InviteLinksModule.initState();
 
   public type UserProfile = {
     name : Text;
@@ -326,5 +330,34 @@ actor {
       Runtime.trap("Unauthorized: Only users can view file list");
     };
     files.values().toArray();
+  };
+
+  // Invite code management (from the invite-links component)
+  public shared ({ caller }) func generateInviteCode() : async Text {
+    if (not (AccessControl.hasPermission(accessControlState, caller, #admin))) {
+      Runtime.trap("Unauthorized: Only admins can generate invite codes");
+    };
+    let blob = await Random.blob();
+    let code = InviteLinksModule.generateUUID(blob);
+    InviteLinksModule.generateInviteCode(inviteState, code);
+    code;
+  };
+
+  public shared ({ caller }) func submitRSVP(name : Text, attending : Bool, inviteCode : Text) : async () {
+    InviteLinksModule.submitRSVP(inviteState, name, attending, inviteCode);
+  };
+
+  public query ({ caller }) func getAllRSVPs() : async [InviteLinksModule.RSVP] {
+    if (not (AccessControl.hasPermission(accessControlState, caller, #admin))) {
+      Runtime.trap("Unauthorized: Only admins can view RSVPs");
+    };
+    InviteLinksModule.getAllRSVPs(inviteState);
+  };
+
+  public query ({ caller }) func getInviteCodes() : async [InviteLinksModule.InviteCode] {
+    if (not (AccessControl.hasPermission(accessControlState, caller, #admin))) {
+      Runtime.trap("Unauthorized: Only admins can view invite codes");
+    };
+    InviteLinksModule.getInviteCodes(inviteState);
   };
 };

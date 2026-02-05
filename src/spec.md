@@ -1,11 +1,11 @@
 # Specification
 
 ## Summary
-**Goal:** Replace the “Facilitator” headshot in the PractitionerAuthority section with the newly uploaded photo served as a frontend static asset.
+**Goal:** Update landing-page copy to remove any promise of providing a session recording and clarify expectations for active participation.
 
 **Planned changes:**
-- Crop/resize the uploaded photo into a centered square headshot and export as a web-optimized JPG for use on the landing page.
-- Add the new headshot image under `frontend/public` so it is served directly by the frontend build.
-- Update the PractitionerAuthority (Facilitator/Practitioner) headshot `<img>` to reference the new static asset and ensure it maintains a square aspect on mobile and desktop (no stretching).
+- Update copy in `frontend/src/components/WhatToExpect.tsx` to remove/rewrite any statements implying a recording will be sent after the session.
+- Replace the “After the Session” subsection text to emphasize active engagement during the call, welcome note-taking, and explicitly state recordings are intentionally not provided to support full presence.
+- Review other landing-page sections to ensure there are no remaining mentions or implications that a recording will be provided.
 
-**User-visible outcome:** The landing page “Facilitator” section displays the newly uploaded headshot correctly across device sizes.
+**User-visible outcome:** The landing page no longer mentions receiving a session recording and instead sets clear expectations to be fully present, actively participate, and take notes during the session.

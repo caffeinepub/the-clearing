@@ -41,6 +41,17 @@ export interface http_request_result {
     body: Uint8Array;
     headers: Array<http_header>;
 }
+export interface RSVP {
+    name: string;
+    inviteCode: string;
+    timestamp: Time;
+    attending: boolean;
+}
+export interface InviteCode {
+    created: Time;
+    code: string;
+    used: boolean;
+}
 export interface ShoppingItem {
     productName: string;
     currency: string;
@@ -123,7 +134,9 @@ export interface backendInterface {
     cancelBooking(bookingId: string): Promise<void>;
     createBooking(clientName: string, clientEmail: string, sessionTime: Time): Promise<string>;
     createCheckoutSession(items: Array<ShoppingItem>, successUrl: string, cancelUrl: string): Promise<string>;
+    generateInviteCode(): Promise<string>;
     getAllBookings(): Promise<Array<Booking>>;
+    getAllRSVPs(): Promise<Array<RSVP>>;
     getAvailableTimeSlots(): Promise<Array<Availability>>;
     getBooking(bookingId: string): Promise<Booking>;
     getBookingsForClient(clientEmail: string): Promise<Array<Booking>>;
@@ -131,6 +144,7 @@ export interface backendInterface {
     getCallerUserRole(): Promise<UserRole>;
     getFile(id: string): Promise<FileReference>;
     getFileList(_from: bigint, _to: bigint): Promise<Array<FileReference>>;
+    getInviteCodes(): Promise<Array<InviteCode>>;
     getStripeSessionStatus(sessionId: string): Promise<StripeSessionStatus>;
     getUserProfile(user: Principal): Promise<UserProfile | null>;
     isCallerAdmin(): Promise<boolean>;
@@ -138,6 +152,7 @@ export interface backendInterface {
     saveCallerUserProfile(profile: UserProfile): Promise<void>;
     setAvailableTimeSlots(slots: Array<Availability>): Promise<void>;
     setStripeConfiguration(config: StripeConfiguration): Promise<void>;
+    submitRSVP(name: string, attending: boolean, inviteCode: string): Promise<void>;
     transform(input: TransformationInput): Promise<TransformationOutput>;
     updateBookingPaymentStatus(bookingId: string, status: PaymentStatus): Promise<void>;
     updateBookingWithVirtualMeetingLink(bookingId: string, meetingLink: string): Promise<void>;

@@ -51,8 +51,11 @@ export default {
                 },
                 gold: {
                     DEFAULT: 'oklch(var(--gold))',
-                    light: 'oklch(var(--gold-light))'
-                }
+                    light: 'oklch(var(--gold-light))',
+                    dark: 'oklch(var(--gold-dark))'
+                },
+                bronze: 'oklch(var(--bronze))',
+                'accent-glow': 'oklch(var(--accent-glow))'
             },
             borderRadius: {
                 lg: 'var(--radius)',
@@ -64,12 +67,14 @@ export default {
                 serif: ['Cormorant Garamond', 'Playfair Display', 'Georgia', 'Times New Roman', 'serif']
             },
             letterSpacing: {
-                tighter: '-0.01em',
-                tight: '-0.005em'
+                tighter: '-0.02em',
+                tight: '-0.01em'
             },
             boxShadow: {
-                'gold': '0 0 30px rgba(218, 165, 32, 0.3)',
-                'gold-lg': '0 0 60px rgba(218, 165, 32, 0.4)'
+                'gold': '0 0 40px oklch(var(--gold) / 0.3)',
+                'gold-lg': '0 0 80px oklch(var(--gold) / 0.4)',
+                'gold-xl': '0 10px 100px oklch(var(--gold) / 0.5)',
+                'inner-gold': 'inset 0 0 30px oklch(var(--gold) / 0.15)'
             }
         }
     },

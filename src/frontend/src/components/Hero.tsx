@@ -1,48 +1,48 @@
-import { Button } from '@/components/ui/button';
-import { ExternalLink } from 'lucide-react';
-
 export default function Hero() {
-  const handleBooking = () => {
-    window.location.href = 'https://linktr.ee/auroraarcana';
-  };
-
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background image with enhanced treatment */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ 
           backgroundImage: 'url(/assets/generated/hero-background-authority.dim_1920x1080.png)',
-          filter: 'brightness(0.5) contrast(1.1)'
+          filter: 'brightness(0.4) contrast(1.2)'
         }}
       />
       
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
+      {/* Gradient overlays for depth */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/70" />
+      <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-black/40" />
       
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-        <div className="mb-6">
-          <div className="inline-block px-6 py-2 border border-gold/30 bg-gold/5 backdrop-blur-sm rounded-full">
-            <span className="text-gold text-sm font-medium tracking-widest uppercase">
+      {/* Gold accent glow */}
+      <div className="absolute inset-0 bg-gradient-to-t from-gold/5 via-transparent to-transparent" />
+      
+      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+        {/* Invitation badge */}
+        <div className="mb-10 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+          <div className="inline-block px-8 py-3 border border-gold/40 bg-gold/10 backdrop-blur-md rounded-full shadow-gold">
+            <span className="text-gold text-sm md:text-base font-medium tracking-[0.2em] uppercase">
               By Invitation Only
             </span>
           </div>
         </div>
 
-        <h1 className="text-5xl md:text-7xl font-light tracking-tight mb-8 text-white drop-shadow-2xl">
+        {/* Main title */}
+        <h1 className="text-6xl md:text-8xl lg:text-9xl font-light tracking-tighter mb-10 text-white drop-shadow-2xl animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200">
           The Clearing™
         </h1>
         
-        <p className="text-xl md:text-2xl font-light text-gray-100 mb-12 max-w-2xl mx-auto leading-relaxed drop-shadow-lg">
-          Clarity over comfort. Perception over prediction. Responsibility over reassurance.
-        </p>
+        {/* Decorative divider */}
+        <div className="flex items-center justify-center gap-6 mb-10 animate-in fade-in duration-1000 delay-300">
+          <div className="h-px w-20 md:w-32 bg-gradient-to-r from-transparent via-gold to-gold" />
+          <div className="h-2 w-2 rounded-full bg-gold shadow-gold" />
+          <div className="h-px w-20 md:w-32 bg-gradient-to-l from-transparent via-gold to-gold" />
+        </div>
         
-        <Button 
-          onClick={handleBooking}
-          size="lg"
-          className="bg-gold hover:bg-gold-light text-black font-semibold px-12 py-6 text-lg shadow-2xl hover:shadow-gold/50 transition-all duration-300 hover:scale-105"
-        >
-          Ready to Book
-          <ExternalLink className="ml-2 h-5 w-5" />
-        </Button>
+        {/* Tagline */}
+        <p className="text-2xl md:text-3xl lg:text-4xl font-light text-gray-100 max-w-3xl mx-auto leading-relaxed drop-shadow-lg animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500">
+          Clarity over comfort.<br className="md:hidden" /> Perception over prediction.<br className="md:hidden" /> Responsibility over reassurance.
+        </p>
       </div>
     </section>
   );

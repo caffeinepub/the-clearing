@@ -2,10 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-replace-the-headshot-image-used-in-the-facilitator-part-of-the-landing-page-currently-implemented-in-the-practitionerauthority-section-with-the-user-uploaded-image-file-whatsapp-image-2026-02-05-at-9-44-49-am-jpeg-and-serve-it-as-a-frontend-static-asset",
-      "featureTitle": "Replace the headshot image used in the “Facilitator” part of the landing page (currently implemented in the PractitionerAuthority section) with the user-uploaded image file “WhatsApp Image 2026-02-05 at 9.44.49 AM.jpeg”, and serve it as a frontend static asset.",
+      "featureId": "feature-update-the-landing-page-copy-to-remove-all-mentions-of-providing-sending-a-session-recording-afterward-and-replace-it-with-copy-that-1-states-the-session-requires-the-participant-s-active-engagement-and-participation-during-the-call-2-welcomes-the-participant-to-take-notes-to-integrate-what-is-learned-and-3-clearly-explains-that-a-recording-is-intentionally-not-provided-so-the-participant-is-not-tempted-to-disengage-with-the-idea-of-listening-to-the-recording-later-use-english-for-all-user-facing-text",
+      "featureTitle": "Update the landing-page copy to remove all mentions of providing/sending a session recording afterward, and replace it with copy that (1) states the session requires the participant’s active engagement and participation during the call, (2) welcomes the participant to take notes to integrate what is learned, and (3) clearly explains that a recording is intentionally not provided so the participant is not tempted to disengage with the idea of “listening to the recording later.” Use English for all user-facing text.",
       "files": [
-        "frontend/src/components/PractitionerAuthority.tsx"
+        "frontend/src/components/WhatToExpect.tsx"
       ],
       "components": [
         "stripe@3.0.0",
@@ -16,10 +16,11 @@
         "http-outcalls@3.0.0",
         "authorization@4.0.0",
         "blob-storage@4.0.0",
-        "github-export-icp-cli@1.0.0"
+        "github-export-icp-cli@1.0.0",
+        "invite-links@3.0.0"
       ],
       "testIds": [
-        "REQ-3"
+        "REQ-17"
       ],
       "confidence": "high"
     }

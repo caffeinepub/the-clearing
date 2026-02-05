@@ -1,26 +1,21 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Swap Facilitator/Practitioner headshot to new uploaded static asset",
+  "title": "Remove recording promise and emphasize active participation in session copy",
   "requirements": [
     {
-      "id": "REQ-3",
-      "summary": "Replace the PractitionerAuthority (Facilitator/Practitioner) headshot image with the newly uploaded photo served as a frontend static asset.",
+      "id": "REQ-17",
+      "summary": "Update landing-page text to remove any promise of a session recording and replace it with copy emphasizing active engagement, note-taking, and intentionally no recording.",
       "acceptanceCriteria": [
-        "The PractitionerAuthority (Facilitator/Practitioner) headshot <img> no longer references the old image path and instead references the new uploaded photo as a static asset (e.g., under frontend/public/assets/...).",
-        "The new image is included in the repository under frontend/public so it is served directly by the frontend build (no backend fetching).",
-        "The headshot renders correctly in the PractitionerAuthority section in both mobile and desktop layouts without stretching (maintains a square crop/aspect)."
+        "In frontend/src/components/WhatToExpect.tsx, the sentence \"The session is recorded and sent to you afterward for your own reflection.\" is removed or rewritten so it does not imply a recording will be provided.",
+        "In the \"After the Session\" subsection of frontend/src/components/WhatToExpect.tsx, the paragraph \"You will receive a recording of the session within 24 hours...\" is removed and replaced with copy that: (a) emphasizes active engagement/presence during the session, (b) explicitly invites note-taking, and (c) states that recordings are intentionally not provided to support full presence.",
+        "No other landing-page sections contain any remaining promise or implication that a recording will be provided after the session."
       ],
       "file_operations": [
         {
-          "path": "frontend/public/assets/generated/facilitator-headshot.user-upload.dim_400x400.jpg",
-          "operation": "create",
-          "description": "Add the cropped/resized, web-optimized JPG derived from “WhatsApp Image 2026-02-05 at 9.44.49 AM.jpeg” as a centered square headshot (400x400) so it can be served directly as a static frontend asset."
-        },
-        {
-          "path": "frontend/src/components/PractitionerAuthority.tsx",
+          "path": "frontend/src/components/WhatToExpect.tsx",
           "operation": "modify",
-          "description": "Update the PractitionerAuthority headshot <img> to reference the new static asset at frontend/public/assets/generated/facilitator-headshot.user-upload.dim_400x400.jpg (replacing the previous /assets/generated/practitioner-headshot.user-upload.dim_400x400.jpg). Keep/verify square aspect and object-cover styling to prevent stretching on mobile/desktop."
+          "description": "Copy-only edits: remove all references to providing/sending a recording and replace with English copy that (1) states the session requires active engagement and participation during the call, (2) welcomes participants to take notes to integrate what is learned, and (3) clearly explains recordings are intentionally not provided to prevent disengagement/\"listen later\" behavior. Also quickly verify within this file that no remaining text implies a recording will be provided."
         }
       ]
     }

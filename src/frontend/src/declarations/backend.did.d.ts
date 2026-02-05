@@ -38,9 +38,20 @@ export type DayOfWeek = { 'tuesday' : null } |
   { 'monday' : null };
 export type ExternalBlob = Uint8Array;
 export interface FileReference { 'id' : string, 'blob' : ExternalBlob }
+export interface InviteCode {
+  'created' : Time,
+  'code' : string,
+  'used' : boolean,
+}
 export type PaymentStatus = { 'pending' : null } |
   { 'completed' : { 'sessionId' : string } } |
   { 'failed' : { 'error' : string } };
+export interface RSVP {
+  'name' : string,
+  'inviteCode' : string,
+  'timestamp' : Time,
+  'attending' : boolean,
+}
 export interface ShoppingItem {
   'productName' : string,
   'currency' : string,
@@ -112,7 +123,9 @@ export interface _SERVICE {
     [Array<ShoppingItem>, string, string],
     string
   >,
+  'generateInviteCode' : ActorMethod<[], string>,
   'getAllBookings' : ActorMethod<[], Array<Booking>>,
+  'getAllRSVPs' : ActorMethod<[], Array<RSVP>>,
   'getAvailableTimeSlots' : ActorMethod<[], Array<Availability>>,
   'getBooking' : ActorMethod<[string], Booking>,
   'getBookingsForClient' : ActorMethod<[string], Array<Booking>>,
@@ -120,6 +133,7 @@ export interface _SERVICE {
   'getCallerUserRole' : ActorMethod<[], UserRole>,
   'getFile' : ActorMethod<[string], FileReference>,
   'getFileList' : ActorMethod<[bigint, bigint], Array<FileReference>>,
+  'getInviteCodes' : ActorMethod<[], Array<InviteCode>>,
   'getStripeSessionStatus' : ActorMethod<[string], StripeSessionStatus>,
   'getUserProfile' : ActorMethod<[Principal], [] | [UserProfile]>,
   'isCallerAdmin' : ActorMethod<[], boolean>,
@@ -127,6 +141,7 @@ export interface _SERVICE {
   'saveCallerUserProfile' : ActorMethod<[UserProfile], undefined>,
   'setAvailableTimeSlots' : ActorMethod<[Array<Availability>], undefined>,
   'setStripeConfiguration' : ActorMethod<[StripeConfiguration], undefined>,
+  'submitRSVP' : ActorMethod<[string, boolean, string], undefined>,
   'transform' : ActorMethod<[TransformationInput], TransformationOutput>,
   'updateBookingPaymentStatus' : ActorMethod<
     [string, PaymentStatus],

@@ -1,8 +1,7 @@
 import { ReactNode, useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import { Lock, Unlock } from 'lucide-react';
+import { Button } from './ui/button';
+import { Input } from './ui/input';
 
 interface AccessCodeGateProps {
   children: ReactNode;
@@ -12,20 +11,21 @@ const CORRECT_CODE = '1122';
 const SESSION_KEY = 'access_code_unlocked';
 
 /**
- * Access-code gate component
+ * Manual access-code gate component
  * 
- * Requires entering the correct code (1122) to unlock the landing page
- * Unlocked state persists for the browser session via sessionStorage
- * Provides a visible "Lock" action to reset and return to the gate
+ * Requires entering code "1122" to unlock the landing page
+ * Access is persisted in sessionStorage for the current browser session
+ * Includes a visible lock button to reset and return to the gate
  */
 export default function AccessCodeGate({ children }: AccessCodeGateProps) {
   const [isUnlocked, setIsUnlocked] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [code, setCode] = useState('');
   const [error, setError] = useState('');
-  const [isLoading, setIsLoading] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Check sessionStorage on mount
   useEffect(() => {
+    // Check if already unlocked in this session
     const unlocked = sessionStorage.getItem(SESSION_KEY);
     if (unlocked === 'true') {
       setIsUnlocked(true);
@@ -35,15 +35,18 @@ export default function AccessCodeGate({ children }: AccessCodeGateProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
     setError('');
 
-    if (code === CORRECT_CODE) {
+    // Validate code
+    if (code.trim() === CORRECT_CODE) {
       sessionStorage.setItem(SESSION_KEY, 'true');
       setIsUnlocked(true);
     } else {
-      setError('Incorrect access code. Please try again.');
-      setCode('');
+      setError('Invalid access code. Please check your code and try again.');
     }
+
+    setIsSubmitting(false);
   };
 
   const handleLock = () => {
@@ -61,51 +64,83 @@ export default function AccessCodeGate({ children }: AccessCodeGateProps) {
   // Show the gate if not unlocked
   if (!isUnlocked) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center px-6">
-        <div className="max-w-md w-full space-y-8">
-          <div className="text-center space-y-4">
-            <div className="flex justify-center">
-              <Lock className="w-12 h-12 text-gold" />
+      <div className="min-h-screen bg-background flex items-center justify-center px-6 relative overflow-hidden">
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: 'radial-gradient(circle at 2px 2px, oklch(var(--gold)) 1px, transparent 0)',
+            backgroundSize: '40px 40px'
+          }} />
+        </div>
+
+        <div className="relative z-10 max-w-lg w-full space-y-12 text-center">
+          {/* Lock icon with gold glow */}
+          <div className="flex justify-center">
+            <div className="relative">
+              <div className="absolute inset-0 blur-2xl bg-gold/20 rounded-full" />
+              <Lock className="relative w-16 h-16 text-gold" strokeWidth={1.5} />
             </div>
-            <h1 className="text-4xl md:text-5xl font-light tracking-tight text-foreground">
-              The Clearing™
-            </h1>
-            <div className="h-px w-24 mx-auto bg-gradient-to-r from-transparent via-gold to-transparent" />
-            <p className="text-lg text-muted-foreground">
-              Enter your access code to continue
-            </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="space-y-2">
-              <Label htmlFor="access-code" className="text-foreground">
-                Access Code
-              </Label>
-              <Input
-                id="access-code"
-                type="text"
-                value={code}
-                onChange={(e) => setCode(e.target.value)}
-                placeholder="Enter code"
-                className="text-center text-lg tracking-widest"
-                autoFocus
-              />
-              {error && (
-                <p className="text-sm text-destructive">{error}</p>
-              )}
+          {/* Title */}
+          <div className="space-y-6">
+            <h1 className="text-5xl md:text-6xl font-light tracking-tighter text-foreground">
+              The Clearing™
+            </h1>
+            
+            <div className="flex items-center justify-center gap-4">
+              <div className="h-px w-16 bg-gradient-to-r from-transparent via-gold to-gold" />
+              <div className="h-1 w-1 rounded-full bg-gold" />
+              <div className="h-px w-16 bg-gradient-to-l from-transparent via-gold to-gold" />
+            </div>
+          </div>
+
+          {/* Access code form */}
+          <div className="space-y-6 max-w-md mx-auto">
+            <div className="inline-block px-6 py-2 border border-gold/30 bg-gold/5 backdrop-blur-sm rounded-full">
+              <span className="text-gold text-sm font-medium tracking-widest uppercase">
+                Access Required
+              </span>
             </div>
 
-            <Button
-              type="submit"
-              className="w-full bg-gold hover:bg-gold-light text-black font-semibold"
-              size="lg"
-            >
-              Enter
-            </Button>
-          </form>
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              Please enter your access code to continue.
+            </p>
 
-          <div className="pt-4 text-center">
-            <p className="text-sm text-muted-foreground/60 italic">
+            <form onSubmit={handleSubmit} className="space-y-4 pt-4">
+              <div className="space-y-2">
+                <Input
+                  type="text"
+                  value={code}
+                  onChange={(e) => {
+                    setCode(e.target.value);
+                    setError('');
+                  }}
+                  placeholder="Enter access code"
+                  className="text-center text-lg tracking-widest bg-background/50 border-gold/20 focus:border-gold/50 transition-colors"
+                  autoFocus
+                  disabled={isSubmitting}
+                />
+                {error && (
+                  <p className="text-sm text-destructive animate-in fade-in slide-in-from-top-1">
+                    {error}
+                  </p>
+                )}
+              </div>
+
+              <Button
+                type="submit"
+                disabled={!code.trim() || isSubmitting}
+                className="w-full bg-gold hover:bg-gold-dark text-background font-medium tracking-wide transition-all shadow-gold"
+              >
+                {isSubmitting ? 'Verifying...' : 'Unlock'}
+              </Button>
+            </form>
+          </div>
+
+          {/* Tagline */}
+          <div className="pt-8">
+            <p className="text-sm text-muted-foreground/60 italic tracking-wide">
               Clarity over comfort. Perception over prediction.
             </p>
           </div>
@@ -117,14 +152,15 @@ export default function AccessCodeGate({ children }: AccessCodeGateProps) {
   // Show unlocked content with lock button
   return (
     <>
-      <button
+      <Button
         onClick={handleLock}
-        className="fixed top-4 right-4 z-50 flex items-center gap-2 px-4 py-2 bg-card/80 backdrop-blur-sm border border-border rounded-full text-sm text-muted-foreground hover:text-foreground hover:border-gold/50 transition-all"
-        title="Lock and return to access code screen"
+        variant="ghost"
+        size="icon"
+        className="fixed top-4 right-4 z-50 text-gold hover:text-gold-light hover:bg-gold/10 transition-colors"
+        title="Lock and return to gate"
       >
-        <Unlock className="w-4 h-4" />
-        <span className="hidden sm:inline">Lock</span>
-      </button>
+        <Unlock className="w-5 h-5" />
+      </Button>
       {children}
     </>
   );

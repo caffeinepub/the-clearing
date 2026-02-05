@@ -47,6 +47,12 @@ export const Booking = IDL.Record({
   'bookingTime' : Time,
   'virtualMeetingLink' : IDL.Opt(IDL.Text),
 });
+export const RSVP = IDL.Record({
+  'name' : IDL.Text,
+  'inviteCode' : IDL.Text,
+  'timestamp' : Time,
+  'attending' : IDL.Bool,
+});
 export const TimeOfDay = IDL.Record({ 'hours' : IDL.Nat, 'minutes' : IDL.Nat });
 export const DayOfWeek = IDL.Variant({
   'tuesday' : IDL.Null,
@@ -74,6 +80,11 @@ export const ExternalBlob = IDL.Vec(IDL.Nat8);
 export const FileReference = IDL.Record({
   'id' : IDL.Text,
   'blob' : ExternalBlob,
+});
+export const InviteCode = IDL.Record({
+  'created' : Time,
+  'code' : IDL.Text,
+  'used' : IDL.Bool,
 });
 export const StripeSessionStatus = IDL.Variant({
   'completed' : IDL.Record({
@@ -141,7 +152,9 @@ export const idlService = IDL.Service({
       [IDL.Text],
       [],
     ),
+  'generateInviteCode' : IDL.Func([], [IDL.Text], []),
   'getAllBookings' : IDL.Func([], [IDL.Vec(Booking)], ['query']),
+  'getAllRSVPs' : IDL.Func([], [IDL.Vec(RSVP)], ['query']),
   'getAvailableTimeSlots' : IDL.Func([], [IDL.Vec(Availability)], ['query']),
   'getBooking' : IDL.Func([IDL.Text], [Booking], ['query']),
   'getBookingsForClient' : IDL.Func([IDL.Text], [IDL.Vec(Booking)], ['query']),
@@ -153,6 +166,7 @@ export const idlService = IDL.Service({
       [IDL.Vec(FileReference)],
       ['query'],
     ),
+  'getInviteCodes' : IDL.Func([], [IDL.Vec(InviteCode)], ['query']),
   'getStripeSessionStatus' : IDL.Func([IDL.Text], [StripeSessionStatus], []),
   'getUserProfile' : IDL.Func(
       [IDL.Principal],
@@ -164,6 +178,7 @@ export const idlService = IDL.Service({
   'saveCallerUserProfile' : IDL.Func([UserProfile], [], []),
   'setAvailableTimeSlots' : IDL.Func([IDL.Vec(Availability)], [], []),
   'setStripeConfiguration' : IDL.Func([StripeConfiguration], [], []),
+  'submitRSVP' : IDL.Func([IDL.Text, IDL.Bool, IDL.Text], [], []),
   'transform' : IDL.Func(
       [TransformationInput],
       [TransformationOutput],
@@ -220,6 +235,12 @@ export const idlFactory = ({ IDL }) => {
     'bookingTime' : Time,
     'virtualMeetingLink' : IDL.Opt(IDL.Text),
   });
+  const RSVP = IDL.Record({
+    'name' : IDL.Text,
+    'inviteCode' : IDL.Text,
+    'timestamp' : Time,
+    'attending' : IDL.Bool,
+  });
   const TimeOfDay = IDL.Record({ 'hours' : IDL.Nat, 'minutes' : IDL.Nat });
   const DayOfWeek = IDL.Variant({
     'tuesday' : IDL.Null,
@@ -242,6 +263,11 @@ export const idlFactory = ({ IDL }) => {
   const UserProfile = IDL.Record({ 'name' : IDL.Text, 'email' : IDL.Text });
   const ExternalBlob = IDL.Vec(IDL.Nat8);
   const FileReference = IDL.Record({ 'id' : IDL.Text, 'blob' : ExternalBlob });
+  const InviteCode = IDL.Record({
+    'created' : Time,
+    'code' : IDL.Text,
+    'used' : IDL.Bool,
+  });
   const StripeSessionStatus = IDL.Variant({
     'completed' : IDL.Record({
       'userPrincipal' : IDL.Opt(IDL.Text),
@@ -305,7 +331,9 @@ export const idlFactory = ({ IDL }) => {
         [IDL.Text],
         [],
       ),
+    'generateInviteCode' : IDL.Func([], [IDL.Text], []),
     'getAllBookings' : IDL.Func([], [IDL.Vec(Booking)], ['query']),
+    'getAllRSVPs' : IDL.Func([], [IDL.Vec(RSVP)], ['query']),
     'getAvailableTimeSlots' : IDL.Func([], [IDL.Vec(Availability)], ['query']),
     'getBooking' : IDL.Func([IDL.Text], [Booking], ['query']),
     'getBookingsForClient' : IDL.Func(
@@ -321,6 +349,7 @@ export const idlFactory = ({ IDL }) => {
         [IDL.Vec(FileReference)],
         ['query'],
       ),
+    'getInviteCodes' : IDL.Func([], [IDL.Vec(InviteCode)], ['query']),
     'getStripeSessionStatus' : IDL.Func([IDL.Text], [StripeSessionStatus], []),
     'getUserProfile' : IDL.Func(
         [IDL.Principal],
@@ -332,6 +361,7 @@ export const idlFactory = ({ IDL }) => {
     'saveCallerUserProfile' : IDL.Func([UserProfile], [], []),
     'setAvailableTimeSlots' : IDL.Func([IDL.Vec(Availability)], [], []),
     'setStripeConfiguration' : IDL.Func([StripeConfiguration], [], []),
+    'submitRSVP' : IDL.Func([IDL.Text, IDL.Bool, IDL.Text], [], []),
     'transform' : IDL.Func(
         [TransformationInput],
         [TransformationOutput],

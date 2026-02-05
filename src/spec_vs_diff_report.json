@@ -1,33 +1,47 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-05T16:59:37.345Z",
-  "summary": "REQ-3 is partially implemented: the PractitionerAuthority headshot <img> now points to a new static path, but the actual uploaded/cropped image asset is not added under frontend/public in this diff, so the frontend cannot serve the new photo as required.",
+  "generatedAt": "2026-02-05T18:58:57.403Z",
+  "summary": "REQ-17 is partially evidenced: WhatToExpect.tsx now contains copy emphasizing active participation, invites note-taking, and explicitly states sessions are intentionally not recorded. However, the diff is truncated and does not show the \"After the Session\" subsection nor confirm removal of all other landing-page mentions of recordings. Additionally, non-requested documentation/metadata updates appear in frontend-file-summaries.txt and project_state.json.",
   "missing_requirements": [
     {
-      "id": "REQ-3",
-      "requirement": "Include the new user-uploaded headshot image in the repository under frontend/public (served as a static asset) and update the PractitionerAuthority headshot <img> to reference that asset (new image file: “WhatsApp Image 2026-02-05 at 9.44.49 AM.jpeg” cropped/optimized to “facilitator-headshot.user-upload.dim_400x400.jpg”).",
-      "reason": "The diff updates the <img src> to “/assets/generated/facilitator-headshot.user-upload.dim_400x400.jpg”, but there are no added files in the diff (Added: 0) and no evidence that the JPG exists under frontend/public. The requirement explicitly requires the new image be included in-repo under frontend/public.",
+      "id": "REQ-17",
+      "requirement": "In the \"After the Session\" subsection of frontend/src/components/WhatToExpect.tsx, remove the paragraph about receiving a recording within 24 hours and replace it with copy emphasizing active presence/engagement, inviting note-taking, and stating recordings are intentionally not provided.",
+      "reason": "The provided diff for WhatToExpect.tsx is truncated before showing the \"After the Session\" subsection, so the required replacement cannot be verified from the available evidence.",
       "evidence": [
-        "frontend/src/components/PractitionerAuthority.tsx (src updated to /assets/generated/facilitator-headshot.user-upload.dim_400x400.jpg)",
-        "file-diff header: Added: 0"
+        "frontend/src/components/WhatToExpect.tsx (truncated)"
+      ]
+    },
+    {
+      "id": "REQ-17",
+      "requirement": "No other landing-page sections contain any remaining promise or implication that a recording will be provided after the session.",
+      "reason": "Only WhatToExpect.tsx is shown (and truncated). No evidence is provided for other landing-page components/sections, so global removal of recording promises cannot be verified.",
+      "evidence": [
+        "frontend/src/components/WhatToExpect.tsx (truncated)",
+        "frontend-file-summaries.txt (truncated)"
       ]
     }
   ],
   "hallucinated_features": [
     {
-      "description": "Project metadata/documentation updates not requested as part of swapping the facilitator headshot (updates to frontend-file-summaries.txt and project_state.json).",
-      "reason": "BuildRequest is narrowly scoped to replacing the headshot image asset and its reference; it does not request updating repo summary/metadata files.",
+      "description": "Updated/added broad documentation-like summaries describing multiple components (e.g., Hero CTA removed, multiple sections 'updated to 90 minutes', extensive design/UX descriptions).",
+      "reason": "BuildRequest is a copy-only change focused on removing the recording promise and updating participation copy; it does not request updating repository summary files or describing unrelated component changes.",
       "evidence": [
-        "frontend-file-summaries.txt",
-        "project_state.json"
+        "frontend-file-summaries.txt (truncated)"
+      ]
+    },
+    {
+      "description": "Updated project state metadata/summary describing overall app features and behavior.",
+      "reason": "BuildRequest does not request changes to project_state.json; requirement scope is limited to landing-page copy updates (WhatToExpect.tsx) without altering flows.",
+      "evidence": [
+        "project_state.json (truncated)"
       ]
     }
   ],
-  "confidence": 0.74,
+  "confidence": 0.62,
   "changed_files": [
     "frontend-file-summaries.txt",
-    "frontend/src/components/PractitionerAuthority.tsx",
+    "frontend/src/components/WhatToExpect.tsx",
     "project_state.json"
   ]
 }

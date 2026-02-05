@@ -1,49 +1,37 @@
 {
   "kind": "build_request",
-  "title": "Replace Facilitator headshot image with the newly uploaded photo",
+  "title": "Remove recording promise and update session participation copy",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-3",
-      "text": "Replace the headshot image used in the “Facilitator” part of the landing page (currently implemented in the PractitionerAuthority section) with the user-uploaded image file “WhatsApp Image 2026-02-05 at 9.44.49 AM.jpeg”, and serve it as a frontend static asset.",
+      "id": "REQ-17",
+      "text": "Update the landing-page copy to remove all mentions of providing/sending a session recording afterward, and replace it with copy that (1) states the session requires the participant’s active engagement and participation during the call, (2) welcomes the participant to take notes to integrate what is learned, and (3) clearly explains that a recording is intentionally not provided so the participant is not tempted to disengage with the idea of “listening to the recording later.” Use English for all user-facing text.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1"
+          "msg-4"
         ],
         "quotes": [
-          "Can you replace the image you have for the Facilitator part with this attached one?"
+          "Let's remove the part of the copy that talks about sending a recording afterwards. Instead, let's inform in the copy that the session will require the participant's active engagement and participation during the session, and that they are welcome to take notes to integrate what is learned in the session. We intentionally don't provide a recording so the participant isn't tempted to not be fully present during the session with the pretext that they can just \"listen to the recording later\", you know."
         ]
       },
       "acceptanceCriteria": [
-        "The PractitionerAuthority (Facilitator/Practitioner) headshot <img> no longer references the old image path and instead references the new uploaded photo as a static asset (e.g., under frontend/public/assets/...).",
-        "The new image is included in the repository under frontend/public so it is served directly by the frontend build (no backend fetching).",
-        "The headshot renders correctly in the PractitionerAuthority section in both mobile and desktop layouts without stretching (maintains a square crop/aspect)."
+        "In frontend/src/components/WhatToExpect.tsx, the sentence \"The session is recorded and sent to you afterward for your own reflection.\" is removed or rewritten so it does not imply a recording will be provided.",
+        "In the \"After the Session\" subsection of frontend/src/components/WhatToExpect.tsx, the paragraph \"You will receive a recording of the session within 24 hours...\" is removed and replaced with copy that: (a) emphasizes active engagement/presence during the session, (b) explicitly invites note-taking, and (c) states that recordings are intentionally not provided to support full presence.",
+        "No other landing-page sections contain any remaining promise or implication that a recording will be provided after the session."
       ]
     }
   ],
   "constraints": [
-    "Do not edit any files under frontend/src/components/ui or other frontend immutablePaths listed in SYSTEM_CONTEXT.",
-    "Backend (Motoko) code must not be changed for this request."
+    "Do not change application functionality or flows (copy-only change).",
+    "Do not modify files under frontend/src/components/ui (compose existing UI components only)."
   ],
   "nonGoals": [
-    "No copy/layout redesign of the landing page beyond swapping the image.",
-    "No changes to access gating, booking, Stripe, or authentication flows."
+    "Adding a recording feature or any post-session content delivery functionality.",
+    "Changing pricing, session length, booking/payment behavior, or access gating behavior."
   ],
   "imageRequirements": {
     "required": [],
-    "edits": [
-      "Crop/resize the uploaded photo to a centered square headshot and export as a web-optimized JPG (WhatsApp Image 2026-02-05 at 9.44.49 AM.jpeg > facilitator-headshot.user-upload.dim_400x400.jpg)"
-    ]
-  },
-  "userProfileUpdate": {
-    "goalsToAdd": [],
-    "goalsToRemove": [],
-    "preferencesToAdd": [],
-    "preferencesToRemove": [],
-    "miscToAdd": [],
-    "miscToRemove": [],
-    "fieldsToSet": {},
-    "fieldsToDelete": []
+    "edits": []
   }
 }
