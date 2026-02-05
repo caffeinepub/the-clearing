@@ -1,34 +1,74 @@
 {
   "kind": "build_request",
-  "title": "Remove recording promise and update session participation copy",
+  "title": "Update landing-page copy for connection and benefits; reorder Readiness section near top",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-17",
-      "text": "Update the landing-page copy to remove all mentions of providing/sending a session recording afterward, and replace it with copy that (1) states the session requires the participant’s active engagement and participation during the call, (2) welcomes the participant to take notes to integrate what is learned, and (3) clearly explains that a recording is intentionally not provided so the participant is not tempted to disengage with the idea of “listening to the recording later.” Use English for all user-facing text.",
+      "id": "REQ-18",
+      "text": "Update the “After the Session” copy in the “What to Expect from The Clearing” section (frontend/src/components/WhatToExpect.tsx) to remove the statement that there is “no ongoing relationship,” and replace it with wording that (a) clearly avoids client dependency and (b) still welcomes/permits ongoing connection (e.g., future contact or staying connected) in a bounded, non-dependent way. Use English for all user-facing text.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-4"
+          "recent-messages-4"
         ],
         "quotes": [
-          "Let's remove the part of the copy that talks about sending a recording afterwards. Instead, let's inform in the copy that the session will require the participant's active engagement and participation during the session, and that they are welcome to take notes to integrate what is learned in the session. We intentionally don't provide a recording so the participant isn't tempted to not be fully present during the session with the pretext that they can just \"listen to the recording later\", you know."
+          "Let's change the copy that says in \"after the session\" that there will be no \"on-going\" relationship. While I don't want my clients to be dependent on my offerings, I do want to establish connections with them."
         ]
       },
       "acceptanceCriteria": [
-        "In frontend/src/components/WhatToExpect.tsx, the sentence \"The session is recorded and sent to you afterward for your own reflection.\" is removed or rewritten so it does not imply a recording will be provided.",
-        "In the \"After the Session\" subsection of frontend/src/components/WhatToExpect.tsx, the paragraph \"You will receive a recording of the session within 24 hours...\" is removed and replaced with copy that: (a) emphasizes active engagement/presence during the session, (b) explicitly invites note-taking, and (c) states that recordings are intentionally not provided to support full presence.",
-        "No other landing-page sections contain any remaining promise or implication that a recording will be provided after the session."
+        "In frontend/src/components/WhatToExpect.tsx under the “After the Session” subsection, the phrase asserting “no ongoing relationship” (or equivalent) is removed.",
+        "Replacement text explicitly communicates that clients should not become dependent on the practitioner/offering.",
+        "Replacement text explicitly communicates that ongoing connection/contact is welcome/possible (within appropriate boundaries), without implying an obligation or dependency.",
+        "All updated copy is in English."
+      ]
+    },
+    {
+      "id": "REQ-19",
+      "text": "Reorder the landing-page sections so the “Readiness” section (currently rendered by frontend/src/components/WhoThisIsFor.tsx) appears immediately after the “Foundation” section (frontend/src/components/WhatItIs.tsx) near the top of the landing page. Implement by updating the render order in frontend/src/App.tsx without removing any sections.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-messages-4"
+        ],
+        "quotes": [
+          "let's put the \"Readiness\" section right after the Foundation section at the top."
+        ]
+      },
+      "acceptanceCriteria": [
+        "In frontend/src/App.tsx, <WhoThisIsFor /> is rendered immediately after <WhatItIs />.",
+        "No landing-page section components are deleted; only ordering is changed.",
+        "The page still renders all sections (Hero, WhatItIs, WhoThisIsFor/Readiness, WhatToExpect, SessionStructure, PractitionerAuthority, PriceAndValue, EthicsAndBoundaries, ReadyToBookCTA, Footer)."
+      ]
+    },
+    {
+      "id": "REQ-20",
+      "text": "Revise the copy in the “What to Expect from The Clearing” section (frontend/src/components/WhatToExpect.tsx) to more strongly and concretely communicate the immense opportunity/value and specific practical benefits of the session, while still maintaining readiness-filtering language and an informative (not “seductive”) tone. Use practical, tangible, visible, helpful outcome language (e.g., clarity on decisions, naming the real issue, identifying next steps, seeing patterns/choices). Use English for all user-facing text.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-messages-4"
+        ],
+        "quotes": [
+          "let's add some immense value and highlights to the benefits of this offering in the \"What to Expect From the Clearing\" copy part.",
+          "stress and let it be known the availability of the immense opportunity and value and specific practical benefits there can be gained from The Clearing experience - not to seduce them, but to inform them in practical, tangible, visible, helpful ways the impact the clarity this offering can provide will provide them with."
+        ]
+      },
+      "acceptanceCriteria": [
+        "frontend/src/components/WhatToExpect.tsx contains updated/expanded copy that clearly enumerates concrete, practical benefits/outcomes a participant can expect from the session.",
+        "The revised copy preserves a readiness filter (e.g., requiring willingness to engage, responsibility, discomfort tolerance) and does not read as hype-driven or manipulative.",
+        "The updated copy remains consistent with existing constraints already stated in the section (non-predictive tarot, not therapy, active engagement, not recorded, 90-minute session).",
+        "All revised/added user-facing text is in English."
       ]
     }
   ],
   "constraints": [
-    "Do not change application functionality or flows (copy-only change).",
-    "Do not modify files under frontend/src/components/ui (compose existing UI components only)."
+    "Do not edit files under frontend/src/components/ui (compose existing UI components only).",
+    "Do not change application functionality (copy and section ordering only)."
   ],
   "nonGoals": [
-    "Adding a recording feature or any post-session content delivery functionality.",
-    "Changing pricing, session length, booking/payment behavior, or access gating behavior."
+    "Do not add new booking/payment features or change Stripe/availability behavior.",
+    "Do not change authentication or access-gating behavior.",
+    "Do not redesign the overall visual theme beyond what is necessary to accommodate the reordered section and updated copy."
   ],
   "imageRequirements": {
     "required": [],

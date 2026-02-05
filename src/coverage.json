@@ -1,18 +1,40 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-05T18:58:57.406Z",
+  "generatedAt": "2026-02-05T19:09:41.652Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 1,
-    "implemented": 1,
+    "total": 3,
+    "implemented": 3,
     "items": [
       {
-        "id": "REQ-17",
-        "summary": "Update the landing-page copy to remove all mentions of providing/sending a session recording afterward, and replace it with copy that (1) states the session requires the participant’s active engagement and participation during the call, (2) welcomes the participant to take notes to integrate what is learned, and (3) clearly explains that a recording is intentionally not provided so the participant is not tempted to disengage with the idea of “listening to the recording later.” Use English for all user-facing text.",
+        "id": "REQ-18",
+        "summary": "Update the “After the Session” copy in the “What to Expect from The Clearing” section (frontend/src/components/WhatToExpect.tsx) to remove the statement that there is “no ongoing relationship,” and replace it with wording that (a) clearly avoids client dependency and (b) still welcomes/permits ongoing connection (e.g., future contact or staying connected) in a bounded, non-dependent way. Use English for all user-facing text.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/WhatToExpect.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/WhatToExpect.tsx"
+        ]
+      },
+      {
+        "id": "REQ-19",
+        "summary": "Reorder the landing-page sections so the “Readiness” section (currently rendered by frontend/src/components/WhoThisIsFor.tsx) appears immediately after the “Foundation” section (frontend/src/components/WhatItIs.tsx) near the top of the landing page. Implement by updating the render order in frontend/src/App.tsx without removing any sections.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-20",
+        "summary": "Revise the copy in the “What to Expect from The Clearing” section (frontend/src/components/WhatToExpect.tsx) to more strongly and concretely communicate the immense opportunity/value and specific practical benefits of the session, while still maintaining readiness-filtering language and an informative (not “seductive”) tone. Use practical, tangible, visible, helpful outcome language (e.g., clarity on decisions, naming the real issue, identifying next steps, seeing patterns/choices). Use English for all user-facing text.",
         "status": "implemented",
         "plannedFiles": [
           "frontend/src/components/WhatToExpect.tsx"
@@ -28,6 +50,7 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
+    "frontend/src/App.tsx",
     "frontend/src/components/WhatToExpect.tsx",
     "project_state.json",
     "scratch/component-selection.json",

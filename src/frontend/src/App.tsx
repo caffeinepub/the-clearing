@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import Hero from './components/Hero';
 import WhatItIs from './components/WhatItIs';
+import WhoThisIsFor from './components/WhoThisIsFor';
 import WhatToExpect from './components/WhatToExpect';
 import SessionStructure from './components/SessionStructure';
-import WhoThisIsFor from './components/WhoThisIsFor';
 import PractitionerAuthority from './components/PractitionerAuthority';
 import PriceAndValue from './components/PriceAndValue';
 import EthicsAndBoundaries from './components/EthicsAndBoundaries';
@@ -43,9 +43,9 @@ export default function App() {
         <div className="min-h-screen bg-background text-foreground">
           <Hero />
           <WhatItIs />
+          <WhoThisIsFor />
           <WhatToExpect />
           <SessionStructure />
-          <WhoThisIsFor />
           <PractitionerAuthority />
           <PriceAndValue />
           <EthicsAndBoundaries />

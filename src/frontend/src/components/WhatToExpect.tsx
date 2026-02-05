@@ -9,6 +9,67 @@ export default function WhatToExpect() {
       </h2>
       
       <div className="space-y-20">
+        {/* Value & Benefits Overview */}
+        <div className="space-y-8">
+          <div className="space-y-6 text-lg md:text-xl leading-relaxed">
+            <p className="text-foreground font-medium text-2xl md:text-3xl">
+              The Clearing offers a rare opportunity: <span className="text-gold">90 minutes of focused, structured attention</span> on 
+              what matters most to you right now.
+            </p>
+            <p className="text-muted-foreground">
+              This is not abstract guidance. It is a practical process designed to help you:
+            </p>
+            <ul className="space-y-5 text-lg md:text-xl leading-relaxed pl-8">
+              <li className="flex items-start group">
+                <span className="mr-4 text-gold/60 group-hover:text-gold transition-colors text-xl">•</span>
+                <span className="text-muted-foreground group-hover:text-foreground transition-colors">
+                  <span className="text-foreground font-medium">Name what is actually happening</span> beneath the surface noise—the real issue, not the presenting symptom
+                </span>
+              </li>
+              <li className="flex items-start group">
+                <span className="mr-4 text-gold/60 group-hover:text-gold transition-colors text-xl">•</span>
+                <span className="text-muted-foreground group-hover:text-foreground transition-colors">
+                  <span className="text-foreground font-medium">Clarify decisions</span> by seeing the actual choice points, trade-offs, and what you are truly weighing
+                </span>
+              </li>
+              <li className="flex items-start group">
+                <span className="mr-4 text-gold/60 group-hover:text-gold transition-colors text-xl">•</span>
+                <span className="text-muted-foreground group-hover:text-foreground transition-colors">
+                  <span className="text-foreground font-medium">Surface hidden patterns</span> that have been shaping your choices, relationships, or work without your full awareness
+                </span>
+              </li>
+              <li className="flex items-start group">
+                <span className="mr-4 text-gold/60 group-hover:text-gold transition-colors text-xl">•</span>
+                <span className="text-muted-foreground group-hover:text-foreground transition-colors">
+                  <span className="text-foreground font-medium">Distinguish signal from noise</span>—what is essential versus what is distraction, fear, or inherited expectation
+                </span>
+              </li>
+              <li className="flex items-start group">
+                <span className="mr-4 text-gold/60 group-hover:text-gold transition-colors text-xl">•</span>
+                <span className="text-muted-foreground group-hover:text-foreground transition-colors">
+                  <span className="text-foreground font-medium">Identify concrete next steps</span> grounded in what you now see, not what you wish were true
+                </span>
+              </li>
+              <li className="flex items-start group">
+                <span className="mr-4 text-gold/60 group-hover:text-gold transition-colors text-xl">•</span>
+                <span className="text-muted-foreground group-hover:text-foreground transition-colors">
+                  <span className="text-foreground font-medium">Release what no longer serves</span>—old stories, obligations, or identities that have become constraints
+                </span>
+              </li>
+            </ul>
+            <p className="text-muted-foreground pt-4">
+              The value is not in being told what to do. It is in <span className="text-foreground font-medium">gaining the clarity to see for yourself</span>—
+              and the confidence to act on what you see. Many participants describe leaving with a sense of relief, direction, 
+              and renewed agency over their path forward.
+            </p>
+            <p className="text-foreground font-medium text-xl pt-2">
+              This is practical work. The insights are actionable. The impact is tangible.
+            </p>
+          </div>
+        </div>
+
+        <Separator className="bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+
         {/* During the Session */}
         <div className="space-y-8">
           <h3 className="text-3xl md:text-4xl font-light text-foreground border-l-2 border-gold pl-6">
@@ -126,9 +187,14 @@ export default function WhatToExpect() {
           </h3>
           <div className="space-y-6 text-lg md:text-xl leading-relaxed pl-8">
             <p className="text-muted-foreground">
-              What you do with the clarity you receive is entirely your responsibility. There is no 
-              follow-up, no ongoing relationship, and no expectation of further contact unless you 
-              choose to book another session in the future.
+              What you do with the clarity you receive is entirely your responsibility. <span className="text-foreground font-medium">This work 
+              is designed to support your autonomy, not create dependence.</span> You are not expected to return for ongoing sessions 
+              or maintain a client relationship.
+            </p>
+            <p className="text-muted-foreground">
+              That said, <span className="text-foreground font-medium">connection is welcome.</span> If you wish to share how the insights landed, 
+              book another session in the future, or simply stay in touch, you are invited to do so. The boundary is clear: 
+              this is not a dependency model. It is a space for clarity, and you remain the authority on your own path.
             </p>
             <p className="text-foreground font-medium text-xl">
               This is a complete, contained experience. You arrive with a question. You leave with insight.

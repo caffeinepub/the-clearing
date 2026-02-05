@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 27,
+  "projectStateVersion": 29,
   "summary": "A web-based booking and payment DApp for “The Clearing™” (a 90‑minute, one-to-one, non-predictive tarot-based clarity session). The React/Tailwind frontend serves a high-authority landing page, supports Internet Identity authentication, can optionally gate access via invite/access code screens, forces first-time users to complete a profile (name/email), lets authenticated users pick an available date/time and pay via Stripe Checkout, and shows payment success/failure pages. An admin-only dashboard allows configuring weekly availability and managing bookings, including adding a virtual meeting link for paid sessions. The Motoko backend canister implements access control (first admin via secret token), stores user profiles, availability slots, bookings, and integrates with Stripe via HTTPS outcalls to create Checkout sessions and query session status. The repo also includes a build-template scaffolding (frontend/backend canister configs, scripts, and tooling) for deployment packaging.",
   "architectural_notes": [
     "Internet Computer architecture: Motoko canister backend + React SPA frontend using generated actor interface (createActorWithConfig).",
@@ -370,6 +370,30 @@
         "REQ-17"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-update-the-after-the-session-copy-in-the-what-to-expect-from-the-clearing-section-frontend-src-components-whattoexpect-tsx-to-remove-the-statement-that-there-is-no-ongoing-relationship-and-replace-it-with-wording-that-a-clearly-avoids-client-dependency-and-b-still-welcomes-permits-ongoing-connection-e-g-future-contact-or-staying-connected-in-a-bounded-non-dependent-way-use-english-for-all-user-facing-text",
+      "title": "Update the “After the Session” copy in the “What to Expect from The Clearing” section (frontend/src/components/WhatToExpect.tsx) to remove the statement that there is “no ongoing relationship,” and replace it with wording that (a) clearly avoids client dependency and (b) still welcomes/permits ongoing connection (e.g., future contact or staying connected) in a bounded, non-dependent way. Use English for all user-facing text.",
+      "reqIds": [
+        "REQ-18"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-reorder-the-landing-page-sections-so-the-readiness-section-currently-rendered-by-frontend-src-components-whothisisfor-tsx-appears-immediately-after-the-foundation-section-frontend-src-components-whatitis-tsx-near-the-top-of-the-landing-page-implement-by-updating-the-render-order-in-frontend-src-app-tsx-without-removing-any-sections",
+      "title": "Reorder the landing-page sections so the “Readiness” section (currently rendered by frontend/src/components/WhoThisIsFor.tsx) appears immediately after the “Foundation” section (frontend/src/components/WhatItIs.tsx) near the top of the landing page. Implement by updating the render order in frontend/src/App.tsx without removing any sections.",
+      "reqIds": [
+        "REQ-19"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-revise-the-copy-in-the-what-to-expect-from-the-clearing-section-frontend-src-components-whattoexpect-tsx-to-more-strongly-and-concretely-communicate-the-immense-opportunity-value-and-specific-practical-benefits-of-the-session-while-still-maintaining-readiness-filtering-language-and-an-informative-not-seductive-tone-use-practical-tangible-visible-helpful-outcome-language-e-g-clarity-on-decisions-naming-the-real-issue-identifying-next-steps-seeing-patterns-choices-use-english-for-all-user-facing-text",
+      "title": "Revise the copy in the “What to Expect from The Clearing” section (frontend/src/components/WhatToExpect.tsx) to more strongly and concretely communicate the immense opportunity/value and specific practical benefits of the session, while still maintaining readiness-filtering language and an informative (not “seductive”) tone. Use practical, tangible, visible, helpful outcome language (e.g., clarity on decisions, naming the real issue, identifying next steps, seeing patterns/choices). Use English for all user-facing text.",
+      "reqIds": [
+        "REQ-20"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -418,6 +442,24 @@
     {
       "id": "AR-9",
       "summary": "Update landing page/session copy to remove any mention of sending a recording afterward; instead emphasize active engagement during the session, encourage note-taking for integration, and clarify recordings are intentionally not provided to support full presence",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Update “After the session” copy to remove/soften the “no ongoing relationship” language; clarify the intent to avoid dependency while still welcoming ongoing connection",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-11",
+      "summary": "Reorder landing-page sections so “Readiness” appears immediately after the “Foundation” section near the top",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-12",
+      "summary": "Revise “What to Expect From The Clearing” copy to more clearly communicate immense practical/tangible benefits and value while still filtering for readiness (informative, not seductive)",
       "reqIds": [],
       "status": "pending"
     }

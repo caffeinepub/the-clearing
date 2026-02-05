@@ -1,11 +1,11 @@
 # Specification
 
 ## Summary
-**Goal:** Update landing-page copy to remove any promise of providing a session recording and clarify expectations for active participation.
+**Goal:** Improve landing-page clarity and perceived value by refining “What to Expect” copy (benefits + post-session connection language) and moving the “Readiness” section closer to the top.
 
 **Planned changes:**
-- Update copy in `frontend/src/components/WhatToExpect.tsx` to remove/rewrite any statements implying a recording will be sent after the session.
-- Replace the “After the Session” subsection text to emphasize active engagement during the call, welcome note-taking, and explicitly state recordings are intentionally not provided to support full presence.
-- Review other landing-page sections to ensure there are no remaining mentions or implications that a recording will be provided.
+- Update the “After the Session” copy in `frontend/src/components/WhatToExpect.tsx` to remove “no ongoing relationship” language and replace it with wording that avoids client dependency while still welcoming bounded, optional ongoing connection.
+- Revise/expand the “What to Expect from The Clearing” copy in `frontend/src/components/WhatToExpect.tsx` to more concretely describe practical, tangible benefits and outcomes, while keeping an informative tone and preserving readiness-filtering language and existing constraints (e.g., non-predictive tarot, not therapy, active engagement, not recorded, 90-minute session).
+- Reorder landing-page sections in `frontend/src/App.tsx` so the “Readiness” section (`<WhoThisIsFor />`) renders immediately after the “Foundation” section (`<WhatItIs />`), without removing any sections.
 
-**User-visible outcome:** The landing page no longer mentions receiving a session recording and instead sets clear expectations to be fully present, actively participate, and take notes during the session.
+**User-visible outcome:** Visitors see the “Readiness” section immediately after “Foundation,” and the “What to Expect” section more clearly explains practical outcomes and allows for appropriate ongoing connection without implying dependency.
