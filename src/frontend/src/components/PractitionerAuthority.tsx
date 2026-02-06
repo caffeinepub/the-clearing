@@ -10,7 +10,7 @@ export default function PractitionerAuthority() {
       
       <div className="grid md:grid-cols-[300px_1fr] gap-12 items-start">
         <div className="mx-auto md:mx-0 space-y-8">
-          <div className="relative w-64 h-64 md:w-full md:h-auto aspect-square rounded-lg overflow-hidden border-2 border-gold/30 shadow-gold group">
+          <div className="relative w-64 h-64 md:w-full md:h-auto aspect-square rounded-lg overflow-hidden border-2 border-celestial-primary/30 shadow-celestial group">
             <img 
               src="/assets/generated/facilitator-headshot.user-upload.dim_400x400.jpg"
               alt="David Tessis - Founder of Aurora Arcana"
@@ -25,7 +25,7 @@ export default function PractitionerAuthority() {
               href="https://tiktok.com/@auroraarcanallc" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-gold transition-colors"
+              className="text-muted-foreground hover:text-celestial-primary transition-colors"
               aria-label="TikTok - @auroraarcanallc"
             >
               <SiTiktok className="w-7 h-7" />
@@ -34,7 +34,7 @@ export default function PractitionerAuthority() {
               href="https://instagram.com/auroraarcanallc" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-gold transition-colors"
+              className="text-muted-foreground hover:text-celestial-primary transition-colors"
               aria-label="Instagram - @auroraarcanallc"
             >
               <SiInstagram className="w-7 h-7" />
@@ -44,7 +44,7 @@ export default function PractitionerAuthority() {
         
         <div className="space-y-8 text-lg md:text-xl leading-relaxed">
           <p className="text-foreground/90">
-            <span className="font-medium text-gold">David Tessis</span> is a seasoned esoteric educator, tarot practitioner, and certified life and health coch with nearly 20 yers of experience in divination and over six years of professional coaching practice. He is the founder of <span className="text-gold font-medium">Aurora Arcana</span>, a private spiritual practice devoted to clarity, ethical discernment, and serious inner work at moments of genuine transition.
+            <span className="font-medium text-celestial-primary">David Tessis</span> is a seasoned esoteric educator, tarot practitioner, and certified life and health coch with nearly 20 yers of experience in divination and over six years of professional coaching practice. He is the founder of <span className="text-celestial-primary font-medium">Aurora Arcana</span>, a private spiritual practice devoted to clarity, ethical discernment, and serious inner work at moments of genuine transition.
           </p>
           
           <p className="text-muted-foreground">
@@ -52,10 +52,10 @@ export default function PractitionerAuthority() {
           </p>
           
           <p className="text-muted-foreground">
-            At the heart of his practice is <span className="text-gold font-medium">The Clearing™</span>, a structured, one-to-one guidance experience designed to dissolve confusion by illuminating the underlying pattern at work. David also works with tarot as a reflective and revelatory tool, supported by a broad range of divinatory systems including Lenormand cards, astrology-based tools, oracle decks, cowrie shells, and pendulum work. These modalities are used not to predict outcomes, but to surface truth, restore agency, and support self-sovereign decision-making.
+            At the heart of his practice is <span className="text-celestial-primary font-medium">The Clearing™</span>, a structured, one-to-one guidance experience designed to dissolve confusion by illuminating the underlying pattern at work. David also works with tarot as a reflective and revelatory tool, supported by a broad range of divinatory systems including Lenormand cards, astrology-based tools, oracle decks, cowrie shells, and pendulum work. These modalities are used not to predict outcomes, but to surface truth, restore agency, and support self-sovereign decision-making.
           </p>
           
-          <div className="border-l-2 border-gold pl-6 py-4">
+          <div className="border-l-2 border-celestial-primary pl-6 py-4">
             <p className="text-foreground italic font-light text-xl md:text-2xl">
               Known for his calm presence, perceptive insight, and ethical restraint, David brings both lightness and seriousness to his work—holding space that is compassionate without being indulgent, and powerful without being forceful.
             </p>

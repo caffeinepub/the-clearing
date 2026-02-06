@@ -4,58 +4,70 @@
 
 @layer base {
     :root {
-        --radius: 0.375rem;
+        --radius: 0.5rem;
         --background: 0.98 0 0;
-        --foreground: 0.15 0 0;
+        --foreground: 0.12 0 0;
         --card: 1 0 0;
-        --card-foreground: 0.15 0 0;
+        --card-foreground: 0.12 0 0;
         --popover: 1 0 0;
-        --popover-foreground: 0.15 0 0;
-        --primary: 0.15 0 0;
+        --popover-foreground: 0.12 0 0;
+        --primary: 0.12 0 0;
         --primary-foreground: 0.98 0 0;
-        --secondary: 0.94 0 0;
-        --secondary-foreground: 0.15 0 0;
-        --muted: 0.94 0 0;
-        --muted-foreground: 0.50 0 0;
-        --accent: 0.94 0 0;
-        --accent-foreground: 0.15 0 0;
+        --secondary: 0.96 0 0;
+        --secondary-foreground: 0.12 0 0;
+        --muted: 0.96 0 0;
+        --muted-foreground: 0.48 0 0;
+        --accent: 0.96 0 0;
+        --accent-foreground: 0.12 0 0;
         --destructive: 0.577 0.245 27.325;
         --destructive-foreground: 0.98 0 0;
-        --border: 0.90 0 0;
-        --input: 0.90 0 0;
-        --ring: 0.50 0 0;
-        --gold: 0.75 0.15 85;
-        --gold-light: 0.82 0.12 85;
-        --gold-dark: 0.68 0.18 85;
-        --bronze: 0.65 0.12 45;
-        --accent-glow: 0.78 0.18 75;
+        --border: 0.92 0 0;
+        --input: 0.92 0 0;
+        --ring: 0.48 0 0;
+        
+        /* Gold Accent System - Light Mode */
+        --gold: 0.85 0.18 85;
+        --gold-light: 0.92 0.14 85;
+        --gold-dark: 0.65 0.22 85;
+        --gold-glow: 0.88 0.16 85;
+        --gold-muted: 0.78 0.12 85;
+        
+        /* Supporting neutrals for depth */
+        --neutral-warm: 0.88 0.02 60;
+        --neutral-cool: 0.88 0.02 240;
     }
 
     .dark {
-        --background: 0.08 0 0;
+        --background: 0.10 0 0;
         --foreground: 0.96 0 0;
-        --card: 0.12 0 0;
+        --card: 0.14 0 0;
         --card-foreground: 0.96 0 0;
-        --popover: 0.10 0 0;
+        --popover: 0.12 0 0;
         --popover-foreground: 0.96 0 0;
         --primary: 0.92 0 0;
-        --primary-foreground: 0.08 0 0;
-        --secondary: 0.18 0 0;
+        --primary-foreground: 0.10 0 0;
+        --secondary: 0.20 0 0;
         --secondary-foreground: 0.96 0 0;
-        --muted: 0.18 0 0;
-        --muted-foreground: 0.62 0 0;
-        --accent: 0.22 0 0;
+        --muted: 0.20 0 0;
+        --muted-foreground: 0.60 0 0;
+        --accent: 0.24 0 0;
         --accent-foreground: 0.96 0 0;
         --destructive: 0.65 0.22 27.325;
-        --destructive-foreground: 0.08 0 0;
-        --border: 1 0 0 / 15%;
-        --input: 1 0 0 / 20%;
+        --destructive-foreground: 0.10 0 0;
+        --border: 1 0 0 / 12%;
+        --input: 1 0 0 / 18%;
         --ring: 0.45 0 0;
-        --gold: 0.82 0.20 75;
-        --gold-light: 0.88 0.16 75;
-        --gold-dark: 0.75 0.22 75;
-        --bronze: 0.68 0.14 45;
-        --accent-glow: 0.85 0.20 75;
+        
+        /* Gold Accent System - Dark Mode (more vibrant) */
+        --gold: 0.82 0.20 85;
+        --gold-light: 0.88 0.16 85;
+        --gold-dark: 0.62 0.24 85;
+        --gold-glow: 0.85 0.18 85;
+        --gold-muted: 0.72 0.14 85;
+        
+        /* Supporting neutrals for depth */
+        --neutral-warm: 0.82 0.03 60;
+        --neutral-cool: 0.82 0.03 240;
     }
 
     * {
@@ -71,22 +83,37 @@
     
     h1, h2, h3, h4, h5, h6 {
         @apply text-foreground;
-        letter-spacing: -0.02em;
+        letter-spacing: -0.025em;
         font-weight: 300;
     }
 
     h1 {
         font-weight: 200;
-        letter-spacing: -0.03em;
+        letter-spacing: -0.035em;
     }
 
     h2 {
         font-weight: 300;
-        letter-spacing: -0.025em;
+        letter-spacing: -0.03em;
+    }
+
+    h3 {
+        font-weight: 400;
+        letter-spacing: -0.02em;
     }
 
     p, li, span {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+        line-height: 1.7;
+    }
+
+    /* Global focus-visible styles for accessibility */
+    a:focus-visible,
+    button:focus-visible,
+    [role="button"]:focus-visible {
+        outline: 2px solid oklch(var(--gold));
+        outline-offset: 2px;
+        border-radius: 2px;
     }
 
     .gold-shimmer {
@@ -121,7 +148,7 @@
         background-image: url('/assets/generated/dark-grain-texture.dim_2048x2048.png');
         background-size: 400px 400px;
         background-repeat: repeat;
-        opacity: 0.03;
+        opacity: 0.025;
         pointer-events: none;
         z-index: 0;
     }
@@ -140,7 +167,7 @@
         background-image: url('/assets/generated/tarot-moon-line.dim_512x512.png');
         background-size: contain;
         background-repeat: no-repeat;
-        opacity: 0.04;
+        opacity: 0.035;
         pointer-events: none;
         z-index: 0;
     }
@@ -159,7 +186,7 @@
         background-image: url('/assets/generated/tarot-star-line.dim_512x512.png');
         background-size: contain;
         background-repeat: no-repeat;
-        opacity: 0.04;
+        opacity: 0.035;
         pointer-events: none;
         z-index: 0;
     }
@@ -179,7 +206,7 @@
         background-image: url('/assets/generated/alchemy-circle-line.dim_1024x1024.png');
         background-size: contain;
         background-repeat: no-repeat;
-        opacity: 0.025;
+        opacity: 0.02;
         pointer-events: none;
         z-index: 0;
     }
@@ -191,9 +218,79 @@
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
-        opacity: 0.15;
+        opacity: 0.12;
         margin: 3rem auto;
         max-width: 600px;
+        pointer-events: none;
+    }
+
+    /* Celestial background overlays */
+    .celestial-nebula-bg {
+        position: absolute;
+        inset: 0;
+        background-image: url('/assets/generated/celestial-nebula-bg.dim_1920x1080.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0.08;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .celestial-starfield-overlay {
+        position: absolute;
+        inset: 0;
+        background-image: url('/assets/generated/celestial-starfield-overlay.dim_2048x2048.png');
+        background-size: 800px 800px;
+        background-repeat: repeat;
+        opacity: 0.06;
+        pointer-events: none;
+        z-index: 0;
+        animation: starfield-drift 60s linear infinite;
+    }
+
+    @keyframes starfield-drift {
+        0% {
+            background-position: 0 0;
+        }
+        100% {
+            background-position: 800px 800px;
+        }
+    }
+
+    .celestial-constellation-corners {
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        background-image: url('/assets/generated/celestial-constellation-corners.dim_512x512.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        opacity: 0.12;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .constellation-top-left {
+        top: 5%;
+        left: 5%;
+    }
+
+    .constellation-top-right {
+        top: 5%;
+        right: 5%;
+        transform: scaleX(-1);
+    }
+
+    .constellation-bottom-left {
+        bottom: 5%;
+        left: 5%;
+        transform: scaleY(-1);
+    }
+
+    .constellation-bottom-right {
+        bottom: 5%;
+        right: 5%;
+        transform: scale(-1);
     }
 
     /* Ensure content stays above motifs */
@@ -202,9 +299,9 @@
         z-index: 1;
     }
 
-    /* Access Gate Enhancements */
+    /* Access Gate Enhancements - Gold Theme */
     .gate-container {
-        background: radial-gradient(ellipse at center, oklch(var(--background)) 0%, oklch(0.06 0 0) 100%);
+        background: radial-gradient(ellipse at center, oklch(var(--background)) 0%, oklch(0.08 0.02 60) 100%);
     }
 
     .gate-grid {
@@ -239,12 +336,12 @@
 
     @keyframes gate-glow-pulse {
         0%, 100% {
-            opacity: 0.4;
+            opacity: 0.35;
             transform: scale(1);
         }
         50% {
-            opacity: 0.6;
-            transform: scale(1.1);
+            opacity: 0.55;
+            transform: scale(1.08);
         }
     }
 
@@ -258,12 +355,12 @@
 
     @keyframes gate-sparkle-twinkle {
         0%, 100% {
-            opacity: 0.3;
+            opacity: 0.25;
             transform: scale(1) rotate(0deg);
         }
         50% {
-            opacity: 0.8;
-            transform: scale(1.2) rotate(180deg);
+            opacity: 0.7;
+            transform: scale(1.15) rotate(180deg);
         }
     }
 
@@ -273,10 +370,10 @@
 
     @keyframes gate-title-glow {
         0%, 100% {
-            text-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.12);
         }
         50% {
-            text-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
         }
     }
 
@@ -286,10 +383,10 @@
 
     @keyframes gate-badge-shimmer {
         0%, 100% {
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.15);
         }
         50% {
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.25);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.25);
         }
     }
 
@@ -306,7 +403,7 @@
         }
     }
 
-    /* Floating ambient particles */
+    /* Floating ambient particles - gold colors */
     .gate-particle {
         position: absolute;
         width: 4px;
@@ -315,23 +412,27 @@
         border-radius: 50%;
         opacity: 0;
         filter: blur(1px);
+        pointer-events: none;
     }
 
     .gate-particle-1 {
         top: 20%;
         left: 15%;
+        background: oklch(var(--gold-light));
         animation: gate-particle-float-1 8s ease-in-out infinite;
     }
 
     .gate-particle-2 {
         top: 60%;
         right: 20%;
+        background: oklch(var(--gold));
         animation: gate-particle-float-2 10s ease-in-out infinite 2s;
     }
 
     .gate-particle-3 {
         bottom: 30%;
         left: 25%;
+        background: oklch(var(--gold-muted));
         animation: gate-particle-float-3 12s ease-in-out infinite 4s;
     }
 
@@ -392,14 +493,41 @@
 
     @keyframes pulse-slow {
         0%, 100% {
-            opacity: 0.3;
+            opacity: 0.25;
         }
         50% {
-            opacity: 0.5;
+            opacity: 0.45;
         }
     }
 
     .bg-gradient-radial {
         background: radial-gradient(circle, var(--tw-gradient-stops));
+    }
+
+    /* Enhanced section transitions */
+    .section-transition {
+        position: relative;
+    }
+
+    .section-transition::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 1px;
+        height: 60px;
+        background: linear-gradient(to bottom, transparent, oklch(var(--gold) / 0.3), transparent);
+    }
+
+    /* Improved readability for body text */
+    .prose-enhanced p {
+        max-width: 70ch;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .prose-enhanced li {
+        max-width: 65ch;
     }
 }

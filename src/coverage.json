@@ -1,37 +1,48 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-05T20:06:49.744Z",
+  "generatedAt": "2026-02-06T22:26:53.246Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 2,
-    "implemented": 2,
+    "total": 3,
+    "implemented": 3,
     "items": [
       {
-        "id": "REQ-29",
-        "summary": "Remove the Aurora Arcana banner image rendering from the PractitionerAuthority section so no banner is displayed at the bottom of the section, while keeping the existing TikTok and Instagram access links intact.",
+        "id": "REQ-1",
+        "summary": "Publish the currently deployed Draft Version 33 to live/production by executing the production deployment checklist (build + deploy backend and frontend to the IC network) and recording the results.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/components/PractitionerAuthority.tsx"
+          "frontend/DEPLOYMENT_LOG_CAPTURE_TEMPLATE.md",
+          "frontend/PRODUCTION_DEPLOY_CHECKLIST.md"
         ],
         "matchedFiles": [
-          "frontend/src/components/PractitionerAuthority.tsx"
+          "frontend/DEPLOYMENT_LOG_CAPTURE_TEMPLATE.md",
+          "frontend/PRODUCTION_DEPLOY_CHECKLIST.md"
         ]
       },
       {
-        "id": "REQ-30",
-        "summary": "Refine the access-code gate entry page (the screen shown when the user must enter code 1122) to feel more visually enticing, mysterious, engaging, and provoking, while keeping the UI readable and aligned with the existing dark + gold design system.",
+        "id": "REQ-2",
+        "summary": "Complete and expand the domain walkthrough documentation so it fully walks a user through low-cost domain options and connecting a purchased domain to the deployed frontend canister (DNS + IC custom domain mapping), including concrete DNS record examples and where to find the frontend canister ID.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/components/AccessCodeGate.tsx",
-          "frontend/src/index.css"
+          "frontend/DOMAIN_SETUP_GUIDE.md"
         ],
         "matchedFiles": [
-          "frontend/src/components/AccessCodeGate.tsx",
-          "frontend/src/index.css"
+          "frontend/DOMAIN_SETUP_GUIDE.md"
+        ]
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Complete the production go-live runbook so it is actionable end-to-end (it currently stops at “Environment Check”), including environment validation steps, the exact deploy commands to run, and post-deploy verification steps (ic0.app URL and `https://clearing.icp0.io`).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/PRODUCTION_GO_LIVE_RUNBOOK.md"
+        ],
+        "matchedFiles": [
+          "frontend/PRODUCTION_GO_LIVE_RUNBOOK.md"
         ]
       }
     ]
@@ -41,9 +52,11 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/components/AccessCodeGate.tsx",
-    "frontend/src/components/PractitionerAuthority.tsx",
-    "frontend/src/index.css",
+    "frontend/DEPLOYMENT_LOG_CAPTURE_TEMPLATE.md",
+    "frontend/DOMAIN_SETUP_GUIDE.md",
+    "frontend/PRODUCTION_DEPLOY_CHECKLIST.md",
+    "frontend/PRODUCTION_GO_LIVE_RUNBOOK.md",
+    "frontend/src/utils/urlParams.ts",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

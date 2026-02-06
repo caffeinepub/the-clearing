@@ -2,10 +2,11 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-remove-the-aurora-arcana-banner-image-rendering-from-the-practitionerauthority-section-so-no-banner-is-displayed-at-the-bottom-of-the-section-while-keeping-the-existing-tiktok-and-instagram-access-links-intact",
-      "featureTitle": "Remove the Aurora Arcana banner image rendering from the PractitionerAuthority section so no banner is displayed at the bottom of the section, while keeping the existing TikTok and Instagram access links intact.",
+      "featureId": "feature-publish-the-currently-deployed-draft-version-33-to-live-production-by-executing-the-production-deployment-checklist-build-deploy-backend-and-frontend-to-the-ic-network-and-recording-the-results",
+      "featureTitle": "Publish the currently deployed Draft Version 33 to live/production by executing the production deployment checklist (build + deploy backend and frontend to the IC network) and recording the results.",
       "files": [
-        "frontend/src/components/PractitionerAuthority.tsx"
+        "frontend/DEPLOYMENT_LOG_CAPTURE_TEMPLATE.md",
+        "frontend/PRODUCTION_DEPLOY_CHECKLIST.md"
       ],
       "components": [
         "stripe@3.0.0",
@@ -20,16 +21,15 @@
         "invite-links@3.0.0"
       ],
       "testIds": [
-        "REQ-29"
+        "REQ-1"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-refine-the-access-code-gate-entry-page-the-screen-shown-when-the-user-must-enter-code-1122-to-feel-more-visually-enticing-mysterious-engaging-and-provoking-while-keeping-the-ui-readable-and-aligned-with-the-existing-dark-gold-design-system",
-      "featureTitle": "Refine the access-code gate entry page (the screen shown when the user must enter code 1122) to feel more visually enticing, mysterious, engaging, and provoking, while keeping the UI readable and aligned with the existing dark + gold design system.",
+      "featureId": "feature-complete-and-expand-the-domain-walkthrough-documentation-so-it-fully-walks-a-user-through-low-cost-domain-options-and-connecting-a-purchased-domain-to-the-deployed-frontend-canister-dns-ic-custom-domain-mapping-including-concrete-dns-record-examples-and-where-to-find-the-frontend-canister-id",
+      "featureTitle": "Complete and expand the domain walkthrough documentation so it fully walks a user through low-cost domain options and connecting a purchased domain to the deployed frontend canister (DNS + IC custom domain mapping), including concrete DNS record examples and where to find the frontend canister ID.",
       "files": [
-        "frontend/src/components/AccessCodeGate.tsx",
-        "frontend/src/index.css"
+        "frontend/DOMAIN_SETUP_GUIDE.md"
       ],
       "components": [
         "stripe@3.0.0",
@@ -44,7 +44,30 @@
         "invite-links@3.0.0"
       ],
       "testIds": [
-        "REQ-30"
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-complete-the-production-go-live-runbook-so-it-is-actionable-end-to-end-it-currently-stops-at-environment-check-including-environment-validation-steps-the-exact-deploy-commands-to-run-and-post-deploy-verification-steps-ic0-app-url-and-https-clearing-icp0-io",
+      "featureTitle": "Complete the production go-live runbook so it is actionable end-to-end (it currently stops at “Environment Check”), including environment validation steps, the exact deploy commands to run, and post-deploy verification steps (ic0.app URL and `https://clearing.icp0.io`).",
+      "files": [
+        "frontend/PRODUCTION_GO_LIVE_RUNBOOK.md"
+      ],
+      "components": [
+        "stripe@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "http-outcalls@3.0.0",
+        "authorization@4.0.0",
+        "blob-storage@4.0.0",
+        "github-export-icp-cli@1.0.0",
+        "invite-links@3.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
       ],
       "confidence": "high"
     }

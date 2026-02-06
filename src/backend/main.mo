@@ -50,7 +50,6 @@ actor {
     userProfiles.add(caller, profile);
   };
 
-  // Stripe integration
   var stripeConfiguration : ?Stripe.StripeConfiguration = null;
 
   public query func isStripeConfigured() : async Bool {
@@ -335,7 +334,6 @@ actor {
     files.values().toArray();
   };
 
-  // Invite code management (from the invite-links component)
   public shared ({ caller }) func generateInviteCode() : async Text {
     if (not (AccessControl.hasPermission(accessControlState, caller, #admin))) {
       Runtime.trap("Unauthorized: Only admins can generate invite codes");

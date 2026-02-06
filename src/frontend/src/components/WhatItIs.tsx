@@ -4,11 +4,11 @@ import SectionShell from './SectionShell';
 export default function WhatItIs() {
   return (
     <SectionShell accentLabel="The Foundation" motifVariant="grain" withFlourishDivider>
-      <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tighter mb-16 text-center">
+      <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tighter mb-20 text-center">
         What The Clearing™ Is
       </h2>
       
-      <div className="space-y-10 text-lg md:text-xl leading-relaxed">
+      <div className="space-y-12 text-lg md:text-xl leading-relaxed prose-enhanced">
         <p className="text-foreground/90">
           The Clearing™ is a private, one-to-one session designed for those seeking <span className="text-gold font-medium">clarity, not comfort</span>. 
           It is structured, non-predictive, and ethically grounded. This is not fortune-telling. 
@@ -21,33 +21,33 @@ export default function WhatItIs() {
           yet articulated.
         </p>
         
-        <Separator className="my-16 bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+        <Separator className="my-20 bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
         
-        <div className="space-y-8">
+        <div className="space-y-10">
           <h3 className="text-2xl md:text-3xl font-light text-foreground border-l-2 border-gold pl-6">
             This is not:
           </h3>
-          <ul className="space-y-5 pl-8">
+          <ul className="space-y-6 pl-8">
             <li className="flex items-start group">
-              <span className="mr-4 text-gold/60 group-hover:text-gold transition-colors text-xl">—</span>
+              <span className="mr-4 text-gold/50 group-hover:text-gold transition-colors text-xl font-light">—</span>
               <span className="text-muted-foreground group-hover:text-foreground transition-colors">
                 Fortune-telling or prediction
               </span>
             </li>
             <li className="flex items-start group">
-              <span className="mr-4 text-gold/60 group-hover:text-gold transition-colors text-xl">—</span>
+              <span className="mr-4 text-gold/50 group-hover:text-gold transition-colors text-xl font-light">—</span>
               <span className="text-muted-foreground group-hover:text-foreground transition-colors">
                 Therapy or mental health treatment
               </span>
             </li>
             <li className="flex items-start group">
-              <span className="mr-4 text-gold/60 group-hover:text-gold transition-colors text-xl">—</span>
+              <span className="mr-4 text-gold/50 group-hover:text-gold transition-colors text-xl font-light">—</span>
               <span className="text-muted-foreground group-hover:text-foreground transition-colors">
                 Reassurance-based coaching or validation
               </span>
             </li>
             <li className="flex items-start group">
-              <span className="mr-4 text-gold/60 group-hover:text-gold transition-colors text-xl">—</span>
+              <span className="mr-4 text-gold/50 group-hover:text-gold transition-colors text-xl font-light">—</span>
               <span className="text-muted-foreground group-hover:text-foreground transition-colors">
                 A space for emotional venting without structure
               </span>

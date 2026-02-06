@@ -206,3 +206,27 @@ export function getSecretFromHash(paramName: string): string | null {
 export function getSecretParameter(paramName: string): string | null {
     return getSecretFromHash(paramName);
 }
+
+/**
+ * Returns the canonical URL for the access gate
+ * This is a clean URL without query parameters or hash fragments
+ * Used for sharing the gate link with others
+ *
+ * @returns The canonical gate URL (protocol + hostname + pathname)
+ */
+export function getCanonicalGateUrl(): string {
+    const { protocol, hostname, port, pathname } = window.location;
+    
+    // Construct base URL
+    let url = `${protocol}//${hostname}`;
+    
+    // Add port if it's not the default for the protocol
+    if (port && port !== '80' && port !== '443') {
+        url += `:${port}`;
+    }
+    
+    // Add pathname (usually just '/' for single-page apps)
+    url += pathname;
+    
+    return url;
+}

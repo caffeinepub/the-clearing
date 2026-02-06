@@ -6,25 +6,29 @@ export default function SessionStructure() {
       number: 1,
       title: 'Arrival & Framing',
       duration: '10 minutes',
-      description: 'We establish the question, tension, or threshold you are working with.'
+      description: 'We establish the question, tension, or threshold you are working with.',
+      color: 'celestial-lavender'
     },
     {
       number: 2,
       title: 'The Reading',
       duration: '50 minutes',
-      description: 'Using tarot as a reflective framework, we examine what is present—patterns, tensions, choices—and clarify what you may already sense but have not yet articulated.'
+      description: 'Using tarot as a reflective framework, we examine what is present—patterns, tensions, choices—and clarify what you may already sense but have not yet articulated.',
+      color: 'celestial-periwinkle'
     },
     {
       number: 3,
       title: 'Integration & Next Steps',
       duration: '20 minutes',
-      description: 'We synthesize what emerged and identify your clearest next step forward.'
+      description: 'We synthesize what emerged and identify your clearest next step forward.',
+      color: 'celestial-rose'
     },
     {
       number: 4,
       title: 'Closing',
       duration: '10 minutes',
-      description: 'Space for final questions and completion of the session.'
+      description: 'Space for final questions and completion of the session.',
+      color: 'celestial-moonstone'
     }
   ];
 
@@ -45,7 +49,7 @@ export default function SessionStructure() {
             className="flex gap-8 items-start group hover:bg-card/30 p-6 rounded-lg transition-all duration-300"
           >
             <div className="flex-shrink-0">
-              <div className="w-16 h-16 rounded-full border-2 border-gold bg-gold/10 flex items-center justify-center text-2xl font-light text-gold group-hover:bg-gold/20 group-hover:shadow-gold transition-all duration-300">
+              <div className={`w-16 h-16 rounded-full border-2 border-${phase.color} bg-${phase.color}/10 flex items-center justify-center text-2xl font-light text-${phase.color} group-hover:bg-${phase.color}/20 group-hover:shadow-${phase.color.split('-')[1]} transition-all duration-300`}>
                 {phase.number}
               </div>
             </div>
@@ -54,7 +58,7 @@ export default function SessionStructure() {
                 <h3 className="text-2xl md:text-3xl font-light text-foreground">
                   {phase.title}
                 </h3>
-                <span className="text-sm text-gold font-medium tracking-wider uppercase">
+                <span className={`text-sm text-${phase.color} font-medium tracking-wider uppercase`}>
                   {phase.duration}
                 </span>
               </div>

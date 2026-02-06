@@ -28,12 +28,39 @@ export default function BuildFailureDiagnostics() {
     return null;
   }
 
+  const getBuildTimestamp = (): string => {
+    try {
+      const metaTag = document.querySelector('meta[name="build-timestamp"]');
+      return metaTag?.getAttribute('content') || 'Unknown';
+    } catch {
+      return 'Unknown';
+    }
+  };
+
   const handleCopy = () => {
+    const buildTimestamp = getBuildTimestamp();
     const errorText = `
-Step: ${error.step}
-Message: ${error.message}
-Timestamp: ${new Date(error.timestamp).toISOString()}
-${error.stack ? `\nStack Trace:\n${error.stack}` : ''}
+=== Build/Deployment Diagnostics ===
+
+Current URL: ${window.location.href}
+Current Host: ${window.location.hostname}
+Current Origin: ${window.location.origin}
+Current Pathname: ${window.location.pathname}
+Referrer: ${document.referrer || 'None'}
+Build Timestamp: ${buildTimestamp}
+
+Failing Step: ${error.step}
+Error Message: ${error.message}
+Error Timestamp: ${new Date(error.timestamp).toISOString()}
+
+${error.stack ? `Stack Trace:\n${error.stack}` : 'No stack trace available'}
+
+=== Browser Info ===
+User Agent: ${navigator.userAgent}
+
+=== Deployment Note ===
+Please paste this diagnostic information into:
+frontend/DEPLOYMENT_NOTE_clearing-icp0-io.md
     `.trim();
 
     navigator.clipboard.writeText(errorText);
@@ -71,6 +98,15 @@ ${error.stack ? `\nStack Trace:\n${error.stack}` : ''}
             </AlertDescription>
           </Alert>
 
+          <div className="space-y-2 text-xs text-muted-foreground bg-muted/50 p-3 rounded-md">
+            <div><strong>Current URL:</strong> {window.location.href}</div>
+            <div><strong>Current Host:</strong> {window.location.hostname}</div>
+            <div><strong>Current Origin:</strong> {window.location.origin}</div>
+            <div><strong>Current Pathname:</strong> {window.location.pathname}</div>
+            <div><strong>Referrer:</strong> {document.referrer || 'None'}</div>
+            <div><strong>Build Timestamp:</strong> {getBuildTimestamp()}</div>
+          </div>
+
           {error.stack && (
             <div className="space-y-2">
               <h4 className="text-sm font-semibold">Stack Trace:</h4>
@@ -91,7 +127,7 @@ ${error.stack ? `\nStack Trace:\n${error.stack}` : ''}
           </div>
 
           <p className="text-xs text-muted-foreground">
-            Copy the error details above and share them with your development team for troubleshooting.
+            Copy the error details above and paste them into <code className="bg-muted px-1 py-0.5 rounded">frontend/DEPLOYMENT_NOTE_clearing-icp0-io.md</code> for troubleshooting.
           </p>
         </CardContent>
       </Card>

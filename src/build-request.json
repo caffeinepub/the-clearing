@@ -1,57 +1,74 @@
 {
   "kind": "build_request",
-  "title": "Remove Practitioner banner and further refine Access Code gate visuals",
-  "priority": "normal",
+  "title": "Publish Draft Version 33 live and provide low-cost domain setup walkthrough",
+  "priority": "high",
   "requirements": [
     {
-      "id": "REQ-29",
-      "text": "Remove the Aurora Arcana banner image rendering from the PractitionerAuthority section so no banner is displayed at the bottom of the section, while keeping the existing TikTok and Instagram access links intact.",
-      "target": "frontend",
+      "id": "REQ-1",
+      "text": "Publish the currently deployed Draft Version 33 to live/production by executing the production deployment checklist (build + deploy backend and frontend to the IC network) and recording the results.",
+      "target": "both",
       "source": {
         "messageIds": [
-          "msg-1"
+          "msg-3"
         ],
         "quotes": [
-          "The banner is not being displayed correctly. Just forget about it. Keep the tiktok and insta access links though."
+          "Publish it now."
         ]
       },
       "acceptanceCriteria": [
-        "In frontend/src/components/PractitionerAuthority.tsx, the bottom banner <img> block is removed (or otherwise not rendered) so the banner is no longer shown on the landing page.",
-        "The TikTok link to https://tiktok.com/@auroraarcanallc remains visible and functional.",
-        "The Instagram link to https://instagram.com/auroraarcanallc remains visible and functional.",
-        "No other PractitionerAuthority content (headshot, biography copy) is removed as part of this change."
+        "Backend and frontend canisters are deployed to the IC network using `dfx build ... --network ic` and `dfx deploy ... --network ic` as per `frontend/PRODUCTION_DEPLOY_CHECKLIST.md`.",
+        "Verification is completed for both the direct canister URL (`https://<canister-id>.ic0.app`) and the custom domain URL (if configured) per `frontend/PRODUCTION_DEPLOY_CHECKLIST.md`.",
+        "A complete deployment log is captured using `frontend/DEPLOYMENT_LOG_CAPTURE_TEMPLATE.md` (date/time, operator, commit hash, DFX version, and full command output)."
       ]
     },
     {
-      "id": "REQ-30",
-      "text": "Refine the access-code gate entry page (the screen shown when the user must enter code 1122) to feel more visually enticing, mysterious, engaging, and provoking, while keeping the UI readable and aligned with the existing dark + gold design system.",
+      "id": "REQ-2",
+      "text": "Complete and expand the domain walkthrough documentation so it fully walks a user through low-cost domain options and connecting a purchased domain to the deployed frontend canister (DNS + IC custom domain mapping), including concrete DNS record examples and where to find the frontend canister ID.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1"
+          "msg-4"
         ],
         "quotes": [
-          "Also, can we refine the \"gate\" entry page where we enter the access code to be like... more visually enticing and mysterious and engaging and provoking?"
+          "And walk me thru those options please."
         ]
       },
       "acceptanceCriteria": [
-        "The locked gate UI in frontend/src/components/AccessCodeGate.tsx is visually enhanced (e.g., richer background treatment, more deliberate lighting/glow, subtle motion/animation, improved typography/spacing) while preserving the current dark + gold palette.",
-        "User-facing text on the gate remains in English.",
-        "The functional behavior of the gate remains unchanged: code \"1122\" unlocks, incorrect codes show an error, and sessionStorage persistence continues to work as currently implemented.",
-        "The refined visuals do not reduce usability: input is clearly discoverable, error text remains legible, and the page works on mobile and desktop sizes."
+        "`frontend/DOMAIN_SETUP_GUIDE.md` is updated so it does not end mid-step and includes: how to retrieve the frontend canister ID (e.g., `dfx canister id frontend --network ic`), the required DNS records with example values, and the high-level IC custom domain mapping steps.",
+        "The guide explicitly covers price-conscious registrar options already listed (Namecheap, Porkbun, Cloudflare, etc.) and includes a short checklist emphasizing renewal price and WHOIS privacy.",
+        "All user-facing documentation text is written in English."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Complete the production go-live runbook so it is actionable end-to-end (it currently stops at “Environment Check”), including environment validation steps, the exact deploy commands to run, and post-deploy verification steps (ic0.app URL and `https://clearing.icp0.io`).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-3",
+          "msg-4"
+        ],
+        "quotes": [
+          "Publish it now.",
+          "And walk me thru those options please."
+        ]
+      },
+      "acceptanceCriteria": [
+        "`frontend/PRODUCTION_GO_LIVE_RUNBOOK.md` includes the missing sections after “Environment Check”, with step-by-step commands aligned with `frontend/PRODUCTION_DEPLOY_CHECKLIST.md`.",
+        "Runbook includes explicit verification steps for: access-code gate (code: `1122`), booking CTA, footer visibility, and no invisible clickable areas at page bottom.",
+        "Runbook includes a short troubleshooting pointer that references the existing checklist troubleshooting section and `frontend/DEPLOYMENT_NOTE_clearing-icp0-io.md`."
       ]
     }
   ],
   "constraints": [
-    "Do not change the access code value (must remain \"1122\").",
-    "Keep all user-facing text in English.",
-    "Do not remove the TikTok and Instagram access links in PractitionerAuthority.",
-    "Do not modify files under frontend/src/components/ui or other frontend immutable paths; compose with existing UI components instead."
+    "Respect the single-actor backend architecture; all Motoko logic remains in `backend/main.mo` unless a state migration is truly required.",
+    "Do not edit any files under `frontend/src/components/ui` or any path listed in `frontend.immutablePaths` in SYSTEM_CONTEXT.",
+    "Do not add third-party auth providers; only Internet Identity is allowed."
   ],
   "nonGoals": [
-    "Do not add or change backend canister logic.",
-    "Do not introduce invite-link gating; keep the manual access-code gate flow.",
-    "Do not redesign or reorder landing-page sections beyond the banner removal in PractitionerAuthority."
+    "Implementing new product features unrelated to publishing/go-live (e.g., new booking flows, new Stripe features, new UI sections).",
+    "Adding external databases or non-IC hosting/deployment targets.",
+    "Purchasing a domain automatically through the app (domain purchase remains manual via registrar websites)."
   ],
   "imageRequirements": {
     "required": [],

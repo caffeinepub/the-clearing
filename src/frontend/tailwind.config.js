@@ -52,10 +52,14 @@ export default {
                 gold: {
                     DEFAULT: 'oklch(var(--gold))',
                     light: 'oklch(var(--gold-light))',
-                    dark: 'oklch(var(--gold-dark))'
+                    dark: 'oklch(var(--gold-dark))',
+                    glow: 'oklch(var(--gold-glow))',
+                    muted: 'oklch(var(--gold-muted))'
                 },
-                bronze: 'oklch(var(--bronze))',
-                'accent-glow': 'oklch(var(--accent-glow))'
+                neutral: {
+                    warm: 'oklch(var(--neutral-warm))',
+                    cool: 'oklch(var(--neutral-cool))'
+                }
             },
             borderRadius: {
                 lg: 'var(--radius)',
@@ -67,14 +71,23 @@ export default {
                 serif: ['Cormorant Garamond', 'Playfair Display', 'Georgia', 'Times New Roman', 'serif']
             },
             letterSpacing: {
-                tighter: '-0.02em',
-                tight: '-0.01em'
+                tighter: '-0.025em',
+                tight: '-0.015em'
             },
             boxShadow: {
-                'gold': '0 0 40px oklch(var(--gold) / 0.3)',
-                'gold-lg': '0 0 80px oklch(var(--gold) / 0.4)',
-                'gold-xl': '0 10px 100px oklch(var(--gold) / 0.5)',
-                'inner-gold': 'inset 0 0 30px oklch(var(--gold) / 0.15)'
+                'gold': '0 0 40px oklch(var(--gold) / 0.25)',
+                'gold-lg': '0 0 60px oklch(var(--gold) / 0.35)',
+                'gold-xl': '0 10px 80px oklch(var(--gold) / 0.4)',
+                'inner-gold': 'inset 0 0 30px oklch(var(--gold) / 0.12)',
+                'glow-subtle': '0 0 20px oklch(var(--gold) / 0.15)',
+                'glow-medium': '0 0 30px oklch(var(--gold) / 0.2)',
+                'glow-strong': '0 0 40px oklch(var(--gold) / 0.3)'
+            },
+            spacing: {
+                '18': '4.5rem',
+                '22': '5.5rem',
+                '26': '6.5rem',
+                '30': '7.5rem'
             }
         }
     },

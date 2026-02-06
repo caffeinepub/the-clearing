@@ -12,8 +12,7 @@ interface SectionShellProps {
 }
 
 /**
- * Reusable section wrapper for consistent high-authority layout with optional esoteric motifs
- * Provides standardized spacing, max-width, optional visual treatments, and subtle symbolic overlays
+ * Reusable section wrapper with refined gold accents, improved spacing rhythm, and optional esoteric motifs for polished visual hierarchy
  */
 export default function SectionShell({
   children,
@@ -26,8 +25,8 @@ export default function SectionShell({
 }: SectionShellProps) {
   const bgClasses = {
     default: '',
-    subtle: 'bg-card/20',
-    elevated: 'bg-card/40 border-y border-border/50'
+    subtle: 'bg-card/15',
+    elevated: 'bg-card/30 border-y border-border/40'
   };
 
   const motifClasses = {
@@ -42,8 +41,8 @@ export default function SectionShell({
     <section className={`py-24 md:py-32 px-6 ${bgClasses[backgroundVariant]} ${motifClasses[motifVariant]} ${className}`}>
       <div className="max-w-4xl mx-auto motif-content">
         {accentLabel && (
-          <div className="mb-8 flex justify-center">
-            <div className="inline-block px-5 py-1.5 border border-gold/20 bg-gold/5 backdrop-blur-sm rounded-full">
+          <div className="mb-10 flex justify-center">
+            <div className="inline-block px-6 py-2 border border-gold/25 bg-gold/6 backdrop-blur-sm rounded-full shadow-glow-subtle">
               <span className="text-gold text-xs font-medium tracking-widest uppercase">
                 {accentLabel}
               </span>
@@ -58,7 +57,7 @@ export default function SectionShell({
         {children}
         
         {withSeparator && (
-          <Separator className="mt-16 bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+          <Separator className="mt-20 bg-gradient-to-r from-transparent via-gold/25 to-transparent" />
         )}
       </div>
     </section>

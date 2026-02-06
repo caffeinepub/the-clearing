@@ -4,7 +4,7 @@ import SectionShell from './SectionShell';
 export default function ReadyToBookCTA() {
   return (
     <SectionShell motifVariant="star" backgroundVariant="elevated" withFlourishDivider>
-      <div className="text-center space-y-12">
+      <div id="booking-section" className="text-center space-y-12">
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tighter">
           Ready to Book?
         </h2>
@@ -18,14 +18,14 @@ export default function ReadyToBookCTA() {
           <Button 
             asChild
             size="lg"
-            className="text-lg px-12 py-6 bg-gold hover:bg-gold-light text-black font-medium tracking-wide shadow-gold-lg hover:shadow-gold-xl transition-all duration-300"
+            className="text-lg px-12 py-6 bg-celestial-primary hover:bg-celestial-lavender text-background font-medium tracking-wide shadow-celestial-lg hover:shadow-celestial-xl transition-all duration-300 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-celestial-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
             <a 
-              href="https://linktr.ee/davidtessis" 
+              href="https://tr.ee/TeHpNDTUkY" 
               target="_blank" 
               rel="noopener noreferrer"
             >
-              Book Your Session
+              I'm Ready To Book
             </a>
           </Button>
         </div>

@@ -1,34 +1,66 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-05T20:06:49.741Z",
-  "summary": "REQ-30 appears implemented via enhanced visuals/animations in AccessCodeGate plus new supporting CSS. REQ-29 likely implemented (TikTok/Instagram links preserved), but the diff is truncated before the bottom of PractitionerAuthority.tsx so full verification that the banner <img> block is removed is not possible from provided evidence. Some global styling/motif additions in index.css appear broader than the requested access-gate refinement.",
+  "generatedAt": "2026-02-06T22:26:53.243Z",
+  "summary": "Diff primarily updates/creates documentation scaffolding and adds a new URL-parameter/sessionStorage utility, but does not provide evidence of an actual IC production deployment or completed runbook/domain setup docs as required.",
   "missing_requirements": [
     {
-      "id": "REQ-29",
-      "requirement": "Remove the Aurora Arcana banner image rendering from the PractitionerAuthority section so no banner is displayed at the bottom of the section.",
-      "reason": "PractitionerAuthority.tsx diff is truncated before the bottom of the component; the provided snippet shows headshot + social links + bio text, but does not include the prior bottom banner area, so we cannot confirm from the diff summary alone that the bottom banner <img> block was removed or is no longer rendered.",
+      "id": "REQ-1",
+      "requirement": "Publish Draft Version 33 to live/production by executing the production deployment checklist (build + deploy backend and frontend to the IC network) and recording the results in a complete deployment log.",
+      "reason": "The diff does not include any captured deployment output/log with date/time, operator, commit hash, DFX version, or command output, nor any evidence of executed `dfx build/deploy ... --network ic` and verification results for ic0.app/custom domain.",
       "evidence": [
-        "frontend/src/components/PractitionerAuthority.tsx (truncated)"
+        "frontend/DEPLOYMENT_LOG_CAPTURE_TEMPLATE.md",
+        "frontend/PRODUCTION_DEPLOY_CHECKLIST.md"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "requirement": "Expand the domain walkthrough so it fully covers retrieving the frontend canister ID, required DNS records with concrete examples, and high-level IC custom domain mapping steps, and ensure it does not end mid-step.",
+      "reason": "The updated guide appears to stop at 'Method 1: Using DFX CLI (Recommended)' and ends immediately after (truncated) without showing the required concrete DNS record examples and IC domain mapping steps; based on visible content, it still ends mid-step.",
+      "evidence": [
+        "frontend/DOMAIN_SETUP_GUIDE.md"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "requirement": "Complete the production go-live runbook end-to-end after 'Environment Check', including environment validation steps, exact deploy commands, post-deploy verification for ic0.app and https://clearing.icp0.io, and required verification items/troubleshooting references.",
+      "reason": "The runbook content shown still stops at 'Environment Check' and begins a 'Verify DFX version' code block without including the missing end-to-end deploy commands, verifications (ic0.app and clearing.icp0.io), or troubleshooting pointer.",
+      "evidence": [
+        "frontend/PRODUCTION_GO_LIVE_RUNBOOK.md"
       ]
     }
   ],
   "hallucinated_features": [
     {
-      "description": "Broader global typography and esoteric motif utilities (e.g., grain/moon/star overlays, shimmer animation) added to global CSS beyond the access-code gate visual refinement.",
-      "reason": "REQ-30 asks to refine the access-code gate entry page visuals; the diff shows multiple global style additions (typography changes and general-purpose motif utilities) that are not explicitly scoped to the access gate and could affect other pages/sections.",
+      "description": "Added URL parameter parsing + sessionStorage persistence utilities (including hash-query parsing and clearing parameters from URL hash).",
+      "reason": "BuildRequest focuses on production deployment/go-live documentation and domain setup walkthrough; it explicitly lists non-goals as new product features unrelated to publishing/go-live. These utilities are new application behavior not requested by REQ-1/2/3.",
       "evidence": [
-        "frontend/src/index.css (truncated)",
-        "frontend-file-summaries.txt (truncated)"
+        "frontend/src/utils/urlParams.ts"
+      ]
+    },
+    {
+      "description": "Updated/added a generated-looking summary file describing many UI/component changes across the frontend.",
+      "reason": "The request did not ask for UI/feature changes or for generating a file that summarizes component behavior; it is unrelated to the deployment/runbook/domain documentation requirements.",
+      "evidence": [
+        "frontend-file-summaries.txt"
+      ]
+    },
+    {
+      "description": "Modified project state metadata to track request items (AR-1..AR-5).",
+      "reason": "Not part of REQ-1/2/3 acceptance criteria and not requested deliverable; appears to be internal bookkeeping rather than deployment execution or documentation completion.",
+      "evidence": [
+        "project_state.json"
       ]
     }
   ],
-  "confidence": 0.62,
+  "confidence": 0.74,
   "changed_files": [
     "frontend-file-summaries.txt",
-    "frontend/src/components/AccessCodeGate.tsx",
-    "frontend/src/components/PractitionerAuthority.tsx",
-    "frontend/src/index.css",
+    "frontend/DEPLOYMENT_LOG_CAPTURE_TEMPLATE.md",
+    "frontend/DOMAIN_SETUP_GUIDE.md",
+    "frontend/PRODUCTION_DEPLOY_CHECKLIST.md",
+    "frontend/PRODUCTION_GO_LIVE_RUNBOOK.md",
+    "frontend/src/utils/urlParams.ts",
     "project_state.json"
   ]
 }
